@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Erfan Shahabi - CV</title>
+
+<!-- FontAwesome for social icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #faf9f2; /* Very light cream */
+    color: #1e293b;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* Sticky navbar */
+  nav.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #faf9f2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 1000;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  nav.navbar a {
+    color: #1e293b;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  nav.navbar a:hover,
+  nav.navbar a.active {
+    background-color: #2563eb;
+    color: white;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
+  }
+
+  /* Profile box with image, line and contact info */
+  .profile-box {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 30px 0 50px 0;
+  }
+  .profile-box img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #cbd5e1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .vertical-line {
+    width: 2px;
+    height: 80px;
+    background-color: #cbd5e1;
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1rem;
+    color: #334155;
+    line-height: 1.6;
+  }
+  .contact-info a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .contact-info p {
+    margin: 4px 0;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin: 0 0 18px 0;
+    text-align: left;
+    color: #1e293b;
+  }
+  .description {
+    font-weight: 400;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 700px;
+    text-align: left;
+    color: #475569;
+  }
+
+  /* Social icons */
+  .social-icons {
+    margin-bottom: 40px;
+  }
+  .social-icons a {
+    font-size: 1.8rem;
+    color: #444;
+    margin-right: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .social-icons a:hover {
+    color: #2563eb;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 60px;
+    max-width: 700px;
+    scroll-margin-top: 60px; /* جلوگیری از مخفی شدن عنوان زیر منو */
+  }
+  section h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    border-bottom: 3px solid #bfdbfe;
+    padding-bottom: 8px;
+    color: #1e293b;
+  }
+  section p, section ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #475569;
+  }
+  section ul {
+    padding-left: 20px;
+  }
+  section ul li {
+    margin-bottom: 10px;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body {
+      padding: 20px 20px 60px;
+    }
+    .profile-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .vertical-line {
+      display: none;
+    }
+    .contact-info {
+      margin-top: 15px;
+    }
+    nav.navbar {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    nav.navbar a {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="#about" class="active">About Me</a>
+  <a href="#education">Education</a>
+  <a href="#experiences">Experiences</a>
+  <a href="#honors">Honor and Awards</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#likes">Likes</a>
+</nav>
+
+<div class="container">
+
+  <div class="profile-box">
+    <img src="avatar.jpg" alt="Erfan Shahabi" />
+    <div class="vertical-line"></div>
+    <div class="contact-info">
+      <p>+98 912 640 40 96</p>
+      <p><a href="mailto:ErfanShahabi@outlook.com">ErfanShahabi@outlook.com</a></p>
+    </div>
+  </div>
+
+  <h1>Erfan Shahabi</h1>
+
+  <p class="description">
+    I am a Master’s student in IT Engineering at the University of Tehran, passionate about Large Language Models, Machine Behavior, and conversational AI. Initially studying Industrial Engineering, I shifted to IT after discovering my enthusiasm for programming, especially Python. I am currently a Research Assistant under the supervision of Dr. Azadeh Shakery, working on Machine Behavior and Conversational Systems. My goal is to develop innovative AI solutions using NLP and LLMs to tackle complex challenges.
+  </p>
+
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+  </div>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m currently a Master’s student in IT Engineering at the University of Tehran with a strong passion for Large Language Models, Machine Behavior and conversation.</p>
+    <p>During my Bachelor’s in Industrial Engineering, I discovered my enthusiasm for computer science and started learning programming, particularly with Python. This passion motivated me to change my path, and after achieving rank 14 in the national entrance exam, I successfully transitioned to IT Engineering for my Master’s degree in University Of Tehran.</p>
+    <p>Currently, I’m conducting research on Machine Behavior and Conversational Systems as a Research Assistant under the supervision of Dr. Azadeh Shakery in the Intelligent Information Systems Laboratory at the University of Tehran.</p>
+    <p>My goal is to innovate in AI-powered solutions using NLP and LLMs for Machine Behavior and to contribute to solving complex challenges in this domain.</p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li>Master of Science in IT Engineering at University Of Tehran (Sep 2024 – Present)</li>
+      <li>Bachelor of Science in Industrial Engineering at Islamic Azad University Science and Research Branch (Sep 2019 – Aug 2023)</li>
+    </ul>
+  </section>
+
+  <section id="experiences">
+    <h2>Experiences</h2>
+    <ul>
+      <li>
+        <strong>Natural Language Processing</strong><br />
+        University Of Tehran - Supervisors: Dr. Hesham Faili<br />
+        Progressed from fundamental NLP concepts to advanced techniques.<br />
+        Implemented a chatbot as the final project using tool-use strategies.<br />
+        Utilized APIs, Transformers, Hugging Face, Langchain, Langgraph, and agents.
+      </li>
+      <li>
+        <strong>Large Language Models</strong><br />
+        University Of Tehran - Supervisors: Dr. MJ Dousti, Dr. Y Yaghoob Zadeh<br />
+        Gained strong skills working with large language models (LLMs) through multiple practical projects.<br />
+        Worked extensively with APIs, Transformers, Hugging Face, Langchain, Langgraph, and agents.<br />
+        Developed use cases showcasing model integration and API utilization.
+      </li>
+      <li>
+        <strong>Intelligent Information Retrieval</strong><br />
+        University Of Tehran - Supervisor: Dr. Azadeh Shakery<br />
+        Started with ad-hoc retrieval methods and embeddings.<br />
+        Worked with BERT models for improved retrieval performance.<br />
+        Explored the application of LLMs in retrieval-augmented generation (RAG).
+      </li>
+      <li>
+        <strong>Advanced Data Mining</strong><br />
+        University Of Tehran - Supervisor: Dr. Azadeh Shakery<br />
+        Learned data fundamentals including cleaning and preprocessing.<br />
+        Covered advanced topics such as data cubes, classification, clustering, and deep learning applications.<br />
+        Applied techniques in real-world datasets.
+      </li>
+      <li>
+        <strong>Social Networks</strong><br />
+        University Of Tehran - Supervisors: Dr. Masoud Asadpour<br />
+        Studied graph theory, centrality measures, and community detection.<br />
+        Applied concepts to analyze real-world network data through projects.
+      </li>
+    </ul>
+  </section>
+
+  <section id="honors">
+    <h2>Honors and Awards</h2>
+    <ul>
+      <li>Ranked 14 in Nationwide Graduate Level University Entrance Test of Information Technology Engineering</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>LLMs Course Project: User Simulation for Evaluating and Improving Conversational Recommender Systems Using LLMs</li>
+      <li>NLP Course Project: Chat Food – Building a Food and Restaurant Assistant Chatbot Based on LLMs Using LangGraph and React</li>
+      <li>Bachelor Thesis: Used Car Price Prediction Based on Manufacturing Year and Mileage Using Machine Learning Methods</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Python</li>
+      <li>React</li>
+      <li>Hugging Face</li>
+      <li>Langchain</li>
+      <li>Langgraph</li>
+      <li>PyTorch</li>
+      <li>English (Advanced)</li>
+    </ul>
+  </section>
+
+  <section id="likes">
+    <h2>Likes</h2>
+    <ul>
+      <li>Exploring recent research in Artificial Intelligence and Natural Language Processing</li>
+      <li>Studying Social Intelligence, Cognitive Science, and Human-Computer Interaction</li>
+      <li>Researching Computational Social Science and emergent social behaviors</li>
+      <li>Outdoor activities like hiking and nature walks for balance and inspiration</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2025 Erfan Shahabi.
+  </footer>
+</div>
+
+<script>
+  // Highlight active nav link on click and smooth scroll
+  const navLinks = document.querySelectorAll('nav.navbar a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      const targetId = link.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
