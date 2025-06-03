@@ -81,14 +81,44 @@
     font-size: 1rem;
     color: #334155;
     line-height: 1.6;
+    gap: 10px;
+    max-width: 260px;
   }
   .contact-info a {
-    color: #3b82f6;
+    color: #3b82f6 !important;
     text-decoration: none;
     font-weight: 600;
   }
   .contact-info p {
     margin: 4px 0;
+  }
+
+  /* Download CV button as a styled button */
+  .download-cv-button {
+    margin-top: 16px;
+    padding: 12px 28px;
+    background-color: #40514e; /* dark green-gray */
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(64, 81, 78, 0.3);
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    width: fit-content;
+  }
+  .download-cv-button:hover,
+  .download-cv-button:focus {
+    background-color: #2e3b36; /* darker */
+    box-shadow: 0 6px 12px rgba(46, 59, 54, 0.5);
+    outline: none;
+  }
+  .download-cv-button:active {
+    background-color: #1f2a27; /* darkest */
+    box-shadow: 0 2px 6px rgba(31, 42, 39, 0.4);
   }
 
   h1 {
@@ -127,7 +157,7 @@
   section {
     margin-bottom: 60px;
     max-width: 700px;
-    scroll-margin-top: 60px; /* جلوگیری از مخفی شدن عنوان زیر منو */
+    scroll-margin-top: 60px; /* prevent heading hidden under nav */
   }
   section h2 {
     font-size: 1.9rem;
@@ -171,6 +201,7 @@
     }
     .contact-info {
       margin-top: 15px;
+      max-width: 100%;
     }
     nav.navbar {
       flex-wrap: wrap;
@@ -205,6 +236,7 @@
     <div class="contact-info">
       <p>+98 912 640 40 96</p>
       <p><a href="mailto:ErfanShahabi@outlook.com">ErfanShahabi@outlook.com</a></p>
+      <button class="download-cv-button" id="downloadBtn">Download CV</button>
     </div>
   </div>
 
@@ -322,6 +354,16 @@
 </div>
 
 <script>
+  // Download CV button logic
+  document.getElementById('downloadBtn').addEventListener('click', function() {
+    const link = document.createElement('a');
+    link.href = 'ErfanShahabi_CV.pdf';
+    link.download = 'ErfanShahabi_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
   // Highlight active nav link on click and smooth scroll
   const navLinks = document.querySelectorAll('nav.navbar a');
 
