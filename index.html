@@ -8,101 +8,155 @@
   <meta name="google-site-verification" content="yc-6k8sx2Q1evW53FMfhIwzdmOqgNxCe33WKg9JWGkg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: #faf9f2;
       color: #1e293b;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 40px 20px 80px;
     }
 
-    nav.navbar {
-      position: sticky;
-      top: 0;
-      background-color: #faf9f2;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 12px 0;
+    .layout {
       display: flex;
-      justify-content: center;
-      gap: 4px;
-      z-index: 1000;
-      font-weight: 600;
-      font-size: 1rem;
+      flex-direction: row;
+      gap: 40px;
     }
-    nav.navbar a {
+
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+      min-width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar .profile-box,
+    .sidebar nav.navbar {
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .sidebar nav.navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .sidebar nav.navbar a {
+      display: block;
       color: #1e293b;
       text-decoration: none;
-      padding: 8px 18px;
+      padding: 6px 12px;
       border-radius: 6px;
       white-space: nowrap;
+      font-weight: bold;
+      border-bottom: 2px solid #cbd5e1;
       transition: background-color 0.3s ease, color 0.3s ease;
+      text-align: center;
+      width: 100%;
+      font-size: 0.95rem;
     }
-    nav.navbar a:hover,
-    nav.navbar a.active {
+
+    .sidebar nav.navbar a:hover,
+    .sidebar nav.navbar a.active {
       background-color: #2563eb;
       color: white;
       box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
     }
 
+    .main-content {
+      flex: 1;
+    }
+
     .profile-box {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 25px;
-      margin: 30px 0 50px 0;
+      text-align: center;
+      font-size: 0.95rem;
     }
+
     .profile-box img {
-      width: 130px;
-      height: 130px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #cbd5e1;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
     }
-    .vertical-line {
-      width: 2px;
-      height: 80px;
-      background-color: #cbd5e1;
+
+    .profile-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 6px 0;
     }
+
     .contact-info {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #334155;
       line-height: 1.6;
-      gap: 12px;
-      max-width: 260px;
+      gap: 6px;
+      align-items: center;
     }
+
     .contact-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 600;
       color: #334155;
+      justify-content: center;
     }
+
     .contact-row a {
       color: #3b82f6 !important;
       text-decoration: none;
     }
+
     .contact-row i {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #40514e;
     }
 
+    .description-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .description-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
     .download-cv-button {
-      margin-top: 8px;
-      padding: 12px 28px;
+      padding: 10px 24px;
       background-color: #40514e;
       color: white;
       font-weight: 600;
-      font-size: 1rem;
-      border-radius: 10px;
+      font-size: 0.95rem;
+      border-radius: 12px;
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 8px rgba(64, 81, 78, 0.3);
@@ -111,49 +165,33 @@
       display: inline-block;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
-      width: fit-content;
     }
+
     .download-cv-button:hover,
     .download-cv-button:focus {
       background-color: #2e3b36;
       box-shadow: 0 6px 12px rgba(46, 59, 54, 0.5);
       outline: none;
     }
+
     .download-cv-button:active {
       background-color: #1f2a27;
       box-shadow: 0 2px 6px rgba(31, 42, 39, 0.4);
     }
-    .download-cv-button:visited {
-      color: white;
-    }
-
-    h1 {
-      font-weight: 700;
-      font-size: 2.5rem;
-      margin: 0 0 18px 0;
-      text-align: left;
-      color: #1e293b;
-    }
-    .description {
-      font-weight: 400;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 40px;
-      max-width: 700px;
-      text-align: left;
-      color: #475569;
-    }
 
     .social-icons {
-      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
     }
+
     .social-icons a {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: #444;
-      margin-right: 20px;
       text-decoration: none;
       transition: color 0.3s ease;
     }
+
     .social-icons a:hover {
       color: #2563eb;
     }
@@ -163,6 +201,7 @@
       max-width: 700px;
       scroll-margin-top: 60px;
     }
+
     section h2 {
       font-size: 1.9rem;
       font-weight: 700;
@@ -171,14 +210,17 @@
       padding-bottom: 8px;
       color: #1e293b;
     }
+
     section p, section ul {
       font-size: 1rem;
       line-height: 1.6;
       color: #475569;
     }
+
     section ul {
       padding-left: 20px;
     }
+
     section ul li {
       margin-bottom: 10px;
     }
@@ -190,85 +232,91 @@
       text-align: center;
     }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 20px 20px 60px;
-      }
-      .profile-box {
+    @media (max-width: 768px) {
+      .layout {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
-      .vertical-line {
-        display: none;
-      }
-      .contact-info {
-        margin-top: 15px;
-        max-width: 100%;
-      }
-      nav.navbar {
+
+      .sidebar nav.navbar {
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
       }
-      nav.navbar a {
-        padding: 8px 16px;
+
+      .sidebar nav.navbar a {
+        padding: 6px 12px;
         font-size: 0.9rem;
+        width: auto;
+      }
+
+      .action-row {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="#about" class="active">About Me</a>
-  <a href="#education">Education</a>
-  <a href="#experiences">Experiences</a>
-  <a href="#research">Research</a>
-  <a href="#honors">Honor and Awards</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#intrests">Intrests</a>
+<div class="layout">
+  <!-- ستون چپ: Sidebar -->
+  <div class="sidebar">
+    <div class="profile-box">
+      <img src="erfan_shahabi.jpg" alt="Erfan Shahabi" />
+       <h2>Erfan Shahabi</h2>
+      <div class="contact-info">
+         <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
 
-</nav>
+        <div class="contact-row">
+          <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+          <a href="tel:+989126404096">+98 912 640 40 96</a>
+        </div>
+        <div class="contact-row">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:ErfanShahabi@outlook.com">ErfanShahabi@outlook.com</a>
+        </div>
+    </div>
 
-<div class="container">
-  <div class="profile-box">
-    <img src="erfan_shahabi.jpg" alt="Erfan Shahabi" />
-    <div class="vertical-line"></div>
-    <div class="contact-info">
-      <div class="contact-row">
-        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-        <span>+98 912 640 40 96</span>
-      </div>
-      <div class="contact-row">
-        <i class="fas fa-envelope" aria-hidden="true"></i>
-        <a href="mailto:ErfanShahabi@outlook.com">ErfanShahabi@outlook.com</a>
-      </div>
-      <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+   </div>
+
+    <nav class="navbar">
+      <a href="#about" class="active">About Me</a>
+      <a href="#education">Education</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#research">Research</a>
+      <a href="#honors">Honors & Awards</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#intrests">Interests</a>
+    </nav>
+  </div>
+</div>
+  <!-- ستون راست: محتوا -->
+  <div class="main-content">
+
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I'm currently a Master's student in IT Engineering at the University of Tehran with a strong passion for Large Language Models, Machine Behavior and conversation.</p>
+  <p>During my Bachelor's in Industrial Engineering, I discovered my enthusiasm for computer science and started learning programming, particularly with Python. This passion motivated me to change my path, and after achieving rank 14 in the national entrance exam, I successfully transitioned to IT Engineering for my Master's degree in University Of Tehran.</p>
+  <p>Currently, I'm conducting research on Machine Behavior and Conversational Systems as a Research Assistant under the supervision of Dr. Azadeh Shakery in the Intelligent Information Systems Laboratory at the University of Tehran.</p>
+  <p>My goal is to innovate in AI-powered solutions using NLP and LLMs for Machine Behavior and to contribute to solving complex challenges in this domain.</p>
+  <div class="action-row">
+    <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
     </div>
   </div>
-
-  <h1>Erfan Shahabi</h1>
-
-  <p class="description">
-    I am a Master's student in IT Engineering at the University of Tehran, passionate about Large Language Models, Machine Behavior, and conversational AI. Initially studying Industrial Engineering, I shifted to IT after discovering my enthusiasm for programming, especially Python. I am currently a Research Assistant under the supervision of Dr. Azadeh Shakery, working on Machine Behavior and Conversational Systems. My goal is to develop innovative AI solutions using NLP and LLMs to tackle complex challenges.
-  </p>
-
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
-  </div>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I'm currently a Master's student in IT Engineering at the University of Tehran with a strong passion for Large Language Models, Machine Behavior and conversation.</p>
-    <p>During my Bachelor's in Industrial Engineering, I discovered my enthusiasm for computer science and started learning programming, particularly with Python. This passion motivated me to change my path, and after achieving rank 14 in the national entrance exam, I successfully transitioned to IT Engineering for my Master's degree in University Of Tehran.</p>
-    <p>Currently, I'm conducting research on Machine Behavior and Conversational Systems as a Research Assistant under the supervision of Dr. Azadeh Shakery in the Intelligent Information Systems Laboratory at the University of Tehran.</p>
-    <p>My goal is to innovate in AI-powered solutions using NLP and LLMs for Machine Behavior and to contribute to solving complex challenges in this domain.</p>
-  </section>
-
+</section>
   <section id="education">
     <h2>Education</h2>
     <ul>
@@ -397,10 +445,10 @@
     <ul>
       <li>Soft Skills: Teamwork, Meeting Tight Deadlines</li>
       <li>Programming Languages: Python, Javascript</li>
-      <li>Large Language Models: Hugging Face, LangChain, Lang graph, LangFuse, Unsloth, PEFT, Datasets, TRL</li>
-      <li>Databases: ElasticSearch, Milvus, lanceDB, Redis, PostgreSQL</li>
+      <li>Large Language Models: Hugging Face, LangChain, Lang graph, Unsloth, PEFT, Datasets, TRL</li>
+      <li>Databases: SQL, lanceDB</li>
       <li>Machine Learning: PyTorch, Scikit Learn, evaluate, TensorFlow</li>
-      <li>Retrieval: Sentence Transformers, Lexical Retrieval, Semantic Retrieval, ColBERT, BM25</li>
+      <li>Retrieval: Sentence Transformers, Lexical Retrieval, Semantic Retrieval, BM25</li>
       <li>English (Advanced)</li>
     </ul>
   </section>
