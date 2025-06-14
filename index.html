@@ -8,73 +8,81 @@
   <meta name="google-site-verification" content="yc-6k8sx2Q1evW53FMfhIwzdmOqgNxCe33WKg9JWGkg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { box-sizing: border-box; }
+/* Reset */
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #faf9f2;
-      color: #1e293b;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #faf9f2;
+  color: #1e293b;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
 
-    .layout {
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-    }
+.layout {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
 
-    .sidebar {
-      position: sticky;
-      top: 20px;
-      align-self: flex-start;
-      min-width: 220px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.sidebar {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .sidebar .profile-box,
-    .sidebar nav.navbar {
-      margin-bottom: 24px;
-      width: 100%;
-    }
+@media (min-width: 769px) {
+  .sidebar {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+  }
+}
 
-    .sidebar nav.navbar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-    }
+.sidebar .profile-box,
+.sidebar nav.navbar {
+  margin-bottom: 24px;
+  width: 100%;
+}
 
-    .sidebar nav.navbar a {
-      display: block;
-      color: #1e293b;
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      white-space: nowrap;
-      font-weight: bold;
-      border-bottom: 2px solid #cbd5e1;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      text-align: center;
-      width: 100%;
-      font-size: 0.95rem;
-    }
+.sidebar nav.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
 
-    .sidebar nav.navbar a:hover,
-    .sidebar nav.navbar a.active {
-      background-color: #2563eb;
-      color: white;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
-    }
+.sidebar nav.navbar a {
+  display: block;
+  color: #1e293b;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-weight: bold;
+  border-bottom: 2px solid #cbd5e1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  font-size: 0.95rem;
+}
 
-    .main-content {
-      flex: 1;
-    }
+.sidebar nav.navbar a:hover,
+.sidebar nav.navbar a.active {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
+}
+
+.main-content {
+  flex: 1;
+}
 
 .profile-box {
   display: flex;
@@ -101,43 +109,55 @@
   color: #1e293b;
 }
 
-/* آیکون‌های شبکه‌های اجتماعی */
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 14px;
   font-size: 1.3rem;
   margin-bottom: 4px;
+  opacity: 0.85;
 }
 
 .social-icons a {
   color: #444;
-  transition: color 0.3s ease;
-}
-.social-icons a:hover {
-  color: #2563eb;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-/* دکمه CV */
+.social-icons a:hover {
+  color: #2563eb;
+  transform: scale(1.1);
+}
+
 .download-cv-button {
   margin-top: 4px;
-  padding: 8px 20px;
-  background-color: #334155;
-  color: #fff;
+  padding: 10px 24px;
+  background-color: #40514e;
+  color: white;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   border-radius: 12px;
   border: none;
   cursor: pointer;
+  text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  display: inline-block;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  box-shadow: 0 4px 8px rgba(64, 81, 78, 0.3);
 }
 
-.download-cv-button:hover {
-  background-color: #1e293b;
+.download-cv-button:hover,
+.download-cv-button:focus {
+  background-color: #2e3b36;
+  box-shadow: 0 6px 12px rgba(46, 59, 54, 0.5);
+  outline: none;
 }
 
-/* اطلاعات تماس */
+.download-cv-button:active {
+  background-color: #1f2a27;
+  box-shadow: 0 2px 6px rgba(31, 42, 39, 0.4);
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -164,133 +184,64 @@
   text-decoration: none;
   font-weight: 500;
 }
-    .description-box {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
 
-    .description-text {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #475569;
-    }
-
-    .action-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .download-cv-button {
-      padding: 10px 24px;
-      background-color: #40514e;
-      color: white;
-      font-weight: 600;
-      font-size: 0.95rem;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(64, 81, 78, 0.3);
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-    }
-
-    .download-cv-button:hover,
-    .download-cv-button:focus {
-      background-color: #2e3b36;
-      box-shadow: 0 6px 12px rgba(46, 59, 54, 0.5);
-      outline: none;
-    }
-
-    .download-cv-button:active {
-      background-color: #1f2a27;
-      box-shadow: 0 2px 6px rgba(31, 42, 39, 0.4);
-    }
-
-   .social-icons {
+.description-box {
   display: flex;
-  gap: 12px;
-  font-size: 1.15rem;
-  justify-content: center;
-  margin-top: 4px;
-  opacity: 0.85;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.social-icons a {
-  color: #666;
-  transition: color 0.3s ease, transform 0.2s ease;
+.description-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
 }
 
-.social-icons a:hover {
-  color: #2563eb;
-  transform: scale(1.1);
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
 }
-    section {
-      margin-bottom: 60px;
-      max-width: 700px;
-      scroll-margin-top: 60px;
-    }
 
-    section h2 {
-      font-size: 1.9rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-      border-bottom: 3px solid #bfdbfe;
-      padding-bottom: 8px;
-      color: #1e293b;
-    }
+section {
+  margin-bottom: 60px;
+  max-width: 700px;
+  scroll-margin-top: 60px;
+}
 
-    section p, section ul {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #475569;
-    }
+section h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  border-bottom: 3px solid #bfdbfe;
+  padding-bottom: 8px;
+  color: #1e293b;
+}
 
-    section ul {
-      padding-left: 20px;
-    }
+section p,
+section ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+}
 
-    section ul li {
-      margin-bottom: 10px;
-    }
+section ul {
+  padding-left: 20px;
+}
 
-    footer {
-      font-size: 0.9rem;
-      color: #888;
-      margin-top: 80px;
-      text-align: center;
-    }
+section ul li {
+  margin-bottom: 10px;
+}
 
-    @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
-        align-items: center;
-      }
+footer {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 80px;
+  text-align: center;
+}
 
-      .sidebar nav.navbar {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .sidebar nav.navbar a {
-        padding: 6px 12px;
-        font-size: 0.9rem;
-        width: auto;
-      }
-
-      .action-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-/* دکمه همبرگر - فقط در موبایل نمایش داده می‌شود */
 .hamburger {
   display: none;
   position: fixed;
@@ -307,7 +258,6 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* فقط در موبایل */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -320,12 +270,17 @@
 
   .sidebar {
     display: none;
-    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 999;
     background-color: #f1f5f9;
     padding: 20px;
-    border-radius: 12px;
-    position: relative;
-    top: 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .sidebar.active {
@@ -334,12 +289,34 @@
     align-items: center;
     animation: fadeIn 0.3s ease-in-out;
   }
+
+  .sidebar nav.navbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sidebar nav.navbar a {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    width: auto;
+  }
+
+  .action-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
   </style>
 </head>
@@ -569,16 +546,48 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
     const navLinks = document.querySelectorAll('.navbar a');
 
-    // Function to set active link
+    // 1. همبرگر: باز و بسته کردن منو
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // 2. بستن منو بعد از کلیک روی لینک‌ها (فقط در موبایل)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
+
+    // 3. اسکرول نرم و فعال کردن لینک
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        if (this.hash !== '') {
+          e.preventDefault();
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+          const target = document.querySelector(this.hash);
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // 4. فعال‌سازی لینک فعلی هنگام اسکرول
     function setActiveLink() {
       const fromTop = window.scrollY + 100;
-
       navLinks.forEach(link => {
         const section = document.querySelector(link.hash);
-
         if (section) {
           if (
             section.offsetTop <= fromTop &&
@@ -592,58 +601,9 @@
       });
     }
 
-    // Set active link on click
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        // Prevent default if it's an anchor link
-        if (this.hash !== "") {
-          e.preventDefault();
-
-          // Remove active class from all links
-          navLinks.forEach(l => l.classList.remove('active'));
-
-          // Add active class to clicked link
-          this.classList.add('active');
-
-          // Smooth scroll to section
-          const target = document.querySelector(this.hash);
-          if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        }
-      });
-    });
-
-    // Set active link on scroll
     window.addEventListener('scroll', setActiveLink);
-
-    // Set initial active link
-    setActiveLink();
-
-  });
-  document.addEventListener('DOMContentLoaded', function () {
-    const hamburger = document.querySelector('.hamburger');
-    const sidebar = document.querySelector('.sidebar');
-    const navLinks = sidebar.querySelectorAll('nav.navbar a');
-
-    // باز و بسته کردن منو
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-    });
-
-    // بستن منو بعد از کلیک روی هر لینک
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          sidebar.classList.remove('active');
-        }
-      });
-    });
+    setActiveLink(); // بار اول
   });
 </script>
-
 </body>
 </html>
