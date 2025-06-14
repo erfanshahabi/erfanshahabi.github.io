@@ -290,11 +290,57 @@
         align-items: flex-start;
       }
     }
+    .hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #1e293b;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  z-index: 999;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .sidebar {
+    display: none;
+    width: 100%;
+    background-color: #f1f5f9;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .sidebar.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .layout {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
   </style>
 </head>
 <body>
 
 <div class="layout">
+  <button class="hamburger" aria-label="Toggle menu">
+  <i class="fas fa-bars"></i>
+</button>
   <!-- ستون چپ: Sidebar -->
   <div class="sidebar">
     <div class="profile-box">
@@ -355,13 +401,21 @@
     </div>
   </div>
 </section>
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li>Master of Science in IT Engineering at University Of Tehran (Sep 2024 - Present)</li>
-      <li>Bachelor of Science in Industrial Engineering at Islamic Azad University Science and Research Branch (Sep 2019 - Aug 2023)</li>
-    </ul>
-  </section>
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>
+      <strong>M.Sc. in Information Technology Engineering</strong><br />
+      University of Tehran, Tehran, Iran &mdash; <em>Sep 2024 – Present</em><br />
+      Supervisor: Dr. Azadeh Shakery
+    </li>
+    <li>
+      <strong>B.Sc. in Industrial Engineering</strong><br />
+      Islamic Azad University, Science and Research Branch, Tehran, Iran &mdash; <em>Sep 2019 – Aug 2023</em><br />
+      GPA: 4.0 / 4.0 (18.07 / 20) &mdash; Supervisor: Dr. Abbas Saghaei
+    </li>
+  </ul>
+</section>
 
   <section id="experiences">
     <h2>Experiences</h2>
@@ -560,6 +614,26 @@
 
     // Set initial active link
     setActiveLink();
+
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+    const navLinks = sidebar.querySelectorAll('nav.navbar a');
+
+    // باز و بسته کردن منو
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // بستن منو بعد از کلیک روی هر لینک
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
   });
 </script>
 
