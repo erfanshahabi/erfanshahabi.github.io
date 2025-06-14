@@ -76,60 +76,94 @@
       flex: 1;
     }
 
-    .profile-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      font-size: 0.95rem;
-    }
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  padding: 20px 0;
+}
 
-    .profile-box img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #cbd5e1;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 10px;
-    }
+.profile-box img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #cbd5e1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
 
-    .profile-name {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin: 6px 0;
-    }
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 4px 0 8px;
+  color: #1e293b;
+}
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: 0.95rem;
-      color: #334155;
-      line-height: 1.6;
-      gap: 6px;
-      align-items: center;
-    }
+/* آیکون‌های شبکه‌های اجتماعی */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
 
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: #334155;
-      justify-content: center;
-    }
+.social-icons a {
+  color: #444;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #2563eb;
+}
 
-    .contact-row a {
-      color: #3b82f6 !important;
-      text-decoration: none;
-    }
+/* دکمه CV */
+.download-cv-button {
+  margin-top: 4px;
+  padding: 8px 20px;
+  background-color: #334155;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
 
-    .contact-row i {
-      font-size: 1.1rem;
-      color: #40514e;
-    }
+.download-cv-button:hover {
+  background-color: #1e293b;
+}
 
+/* اطلاعات تماس */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #334155;
+  margin-top: 4px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-row i {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.contact-row a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
     .description-box {
       display: flex;
       flex-direction: column;
@@ -179,23 +213,24 @@
       box-shadow: 0 2px 6px rgba(31, 42, 39, 0.4);
     }
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-    }
+   .social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 1.15rem;
+  justify-content: center;
+  margin-top: 4px;
+  opacity: 0.85;
+}
 
-    .social-icons a {
-      font-size: 1.6rem;
-      color: #444;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+.social-icons a {
+  color: #666;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
 
-    .social-icons a:hover {
-      color: #2563eb;
-    }
-
+.social-icons a:hover {
+  color: #2563eb;
+  transform: scale(1.1);
+}
     section {
       margin-bottom: 60px;
       max-width: 700px;
@@ -265,8 +300,16 @@
     <div class="profile-box">
       <img src="erfan_shahabi.jpg" alt="Erfan Shahabi" />
        <h2>Erfan Shahabi</h2>
+               <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
+
+          <div class="social-icons">
+      <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+   </div>
+
       <div class="contact-info">
-         <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
 
         <div class="contact-row">
           <i class="fas fa-mobile-alt" aria-hidden="true"></i>
@@ -278,12 +321,7 @@
         </div>
     </div>
 
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
-   </div>
+
 
     <nav class="navbar">
       <a href="#about" class="active">About Me</a>
