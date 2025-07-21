@@ -7,318 +7,295 @@
   <meta name="description" content="I'm a Master's student in IT Engineering at University of Tehran, passionate about NLP, LLMs, and AI research.">
   <meta name="google-site-verification" content="yc-6k8sx2Q1evW53FMfhIwzdmOqgNxCe33WKg9JWGkg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <style>
 /* Reset */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-blue: #3498db;
+  --light-blue: #e0f2f7;
+  --dark-text: #2c3e50;
+  --medium-text: #5f6c7b;
+  --light-bg: #f8faff;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+}
+
+html, body {
+  height: 100%; /* Important: Ensures html and body take full viewport height */
+  min-height: 100%; /* Ensures minimum height, crucial for sticky parent */
+  overflow-y: auto; /* The main scrollbar for the page */
+  scroll-behavior: smooth; /* For smoother scrolling to sections */
 }
 
 body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #faf9f2;
-  color: #1e293b;
-  max-width: 1100px;
+  font-family: 'Inter', sans-serif;
+  background: var(--light-bg);
+  color: var(--dark-text);
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 30px 20px 80px; /* Overall page padding */
+  line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif;
+  color: var(--dark-text);
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--light-blue);
+  margin-bottom: 25px;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1a7bb9;
+}
+
+/* Layout Container for Sidebar and Main Content */
 .layout {
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 60px;
+  /* Crucial for sticky: Ensures the flex container is tall enough for sidebar to stick within */
+  min-height: calc(100vh - 30px - 80px); /* 100vh - (body top padding + body bottom padding) */
+  align-items: flex-start; /* Align flex items to the top */
+  /* NO overflow: hidden/scroll/auto here. This is key for sticky. */
 }
 
+/* Sidebar Styling */
 .sidebar {
-  min-width: 220px;
+  min-width: 280px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  border: 1px solid var(--border-color);
+
+  /* Make sidebar sticky on larger screens */
+  position: sticky;
+  top: 30px; /* This must match the body's top padding for smooth stick effect */
+
+  /* For internal sidebar scrolling if its content is too long */
+  height: fit-content; /* Allows sidebar to take only the height of its content initially */
+  max-height: calc(100vh - 60px); /* 100vh - (sticky top value + some bottom margin/padding for visual space) */
+  overflow-y: auto; /* Enables internal scrolling for sidebar content if content overflows */
+  -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
 }
 
-@media (min-width: 769px) {
-  .sidebar {
-    position: sticky;
-    top: 20px;
-    align-self: flex-start;
-  }
-}
-
+/* Sidebar internal components */
 .sidebar .profile-box,
 .sidebar nav.navbar {
-  margin-bottom: 24px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
 .sidebar nav.navbar {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .sidebar nav.navbar a {
-  display: block;
-  color: #1e293b;
+  display: flex;
+  align-items: center;
+  color: var(--dark-text);
   text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 10px 15px;
+  border-radius: 8px;
   white-space: nowrap;
-  font-weight: bold;
-  border-bottom: 2px solid #cbd5e1;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
   width: 100%;
-  font-size: 0.95rem;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-.sidebar nav.navbar a:hover,
-.sidebar nav.navbar a.active {
-  background-color: #2563eb;
+.sidebar nav.navbar a i {
+  margin-right: 10px;
+  color: var(--medium-text);
+  font-size: 1.1em;
+}
+
+.sidebar nav.navbar a:hover {
+  background-color: var(--light-blue);
+  color: var(--primary-blue);
+  transform: translateX(5px);
+}
+
+.sidebar nav.navbar a.active,
+.sidebar nav.navbar a.active:hover {
+  background: linear-gradient(45deg, var(--primary-blue), #5dade2);
   color: white;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
 }
 
+.sidebar nav.navbar a.active i,
+.sidebar nav.navbar a:hover i {
+  color: white;
+}
+
+/* Main Content Styling */
 .main-content {
-  flex: 1;
+  flex: 1; /* Allows main content to take remaining space */
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px var(--shadow-light);
+  border: 1px solid var(--border-color);
+  /* NO overflow: hidden/scroll/auto here either */
 }
 
+/* Profile Box & Social Icons */
 .profile-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 5px;
-  padding: 20px 0;
+  gap: 10px;
+  margin-bottom: 25px;
 }
-
 .profile-box img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #cbd5e1;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+  border: 4px solid var(--light-blue); box-shadow: 0 4px 15px var(--shadow-medium);
 }
+.profile-name { font-size: 2.2rem; font-weight: 700; margin: 20px 0 10px; }
+.profile-title { font-size: 1.1rem; color: var(--medium-text); margin-top: -5px; margin-bottom: 15px;}
+.social-icons { display: flex; justify-content: center; gap: 18px; font-size: 1.5rem; margin-top: 15px; margin-bottom: 10px; }
+.social-icons a { color: var(--medium-text); transition: color 0.3s ease, transform 0.2s ease; }
+.social-icons a:hover { color: var(--primary-blue); transform: translateY(-3px) scale(1.1); }
 
-.profile-name {
-  font-size: 2.5rem;
-  font-weight: 500;
-  color: #1e293b;
-  font-family: 'Playfair Display', Georgia, serif;
-  margin: 16px 0 12px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  font-size: 1.3rem;
-  margin-bottom: 4px;
-  opacity: 0.85;
-}
-
-.social-icons a {
-  color: #444;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.social-icons a:hover {
-  color: #2563eb;
-  transform: scale(1.1);
-}
-
+/* Download CV Button */
 .download-cv-button {
-  margin-top: 4px;
-  padding: 10px 24px;
-  background-color: #40514e;
-  color: white;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  box-shadow: 0 4px 8px rgba(64, 81, 78, 0.3);
+  margin-top: 20px; padding: 12px 28px; background: linear-gradient(45deg, var(--primary-blue), #5dade2);
+  color: white; font-weight: 600; font-size: 1rem; border-radius: 8px; border: none; cursor: pointer;
+  text-align: center; text-decoration: none; display: inline-block; transition: all 0.3s ease;
+  user-select: none; box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
 }
+.download-cv-button:hover, .download-cv-button:focus { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4); outline: none; color: white; }
+.download-cv-button:active { transform: translateY(0); box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3); }
 
-.download-cv-button:hover,
-.download-cv-button:focus {
-  background-color: #2e3b36;
-  box-shadow: 0 6px 12px rgba(46, 59, 54, 0.5);
-  outline: none;
-}
-
-.download-cv-button:active {
-  background-color: #1f2a27;
-  box-shadow: 0 2px 6px rgba(31, 42, 39, 0.4);
-}
-
+/* Contact Info */
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.9rem;
-  color: #334155;
-  margin-top: 4px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 0.95rem;
+  color: var(--medium-text); margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color);
+}
+.contact-row { display: flex; align-items: center; gap: 8px; }
+.contact-row i { font-size: 1.1rem; color: var(--primary-blue); }
+.contact-row a { color: var(--medium-text); font-weight: 500; transition: color 0.3s ease; }
+.contact-row a:hover { color: var(--primary-blue); }
+
+/* Section Styling */
+section {
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color);
+  /* scroll-margin-top helps when linking directly to an ID, preventing content from being hidden under sticky elements */
+  scroll-margin-top: 100px; /* Adjust this value if you have a fixed header or if content gets cut off */
 }
 
-.contact-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 20px;
 }
 
-.contact-row i {
-  font-size: 1rem;
-  color: #64748b;
+section ul { padding-left: 25px; list-style: none; }
+section ul li { margin-bottom: 15px; position: relative; padding-left: 20px; color: var(--medium-text); }
+section ul li::before {
+  content: "\f0da"; font-family: "Font Awesome 5 Free"; font-weight: 900;
+  color: var(--primary-blue); position: absolute; left: 0; top: 5px; font-size: 0.9em;
 }
 
-.contact-row a {
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.description-box {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.description-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #475569;
-}
+section h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 5px; color: var(--dark-text); }
+section p { color: var(--medium-text); }
 
 .action-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap;
+  margin-top: 30px; padding-top: 20px; border-top: 1px dashed var(--border-color);
 }
-
-section {
-  margin-bottom: 60px;
-  max-width: 700px;
-  scroll-margin-top: 60px;
-}
-
-section h2 {
-  font-size: 1.9rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-  border-bottom: 3px solid #bfdbfe;
-  padding-bottom: 8px;
-  color: #1e293b;
-}
-
-section p,
-section ul {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #475569;
-}
-
-section ul {
-  padding-left: 20px;
-}
-
-section ul li {
-  margin-bottom: 10px;
-}
+.action-row .social-icons { margin-top: 0; margin-bottom: 0; }
 
 footer {
-  font-size: 0.9rem;
-  color: #888;
-  margin-top: 80px;
-  text-align: center;
+  font-size: 0.85rem; color: var(--medium-text); margin-top: 60px; text-align: center;
+  padding-top: 20px; border-top: 1px solid var(--border-color);
 }
 
+/* Mobile Hamburger and Sidebar Overlay */
 .hamburger {
-  display: none;
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 1000;
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 1.5rem;
-  color: #1e293b;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: none; /* Hidden on desktop */
+  position: fixed; top: 20px; left: 20px; z-index: 1000;
+  background: var(--card-bg); border: 1px solid var(--border-color);
+  padding: 10px 12px; border-radius: 8px; font-size: 1.6rem;
+  color: var(--dark-text); cursor: pointer; box-shadow: 0 2px 10px var(--shadow-medium);
+  transition: transform 0.2s ease;
 }
+.hamburger:active { transform: scale(0.95); }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
+@media (max-width: 991px) {
+  .hamburger { display: block; }
+  body { padding: 20px; } /* Adjust body padding for mobile view */
+  .layout { flex-direction: column; gap: 30px; min-height: auto; } /* Stack vertically */
 
-  .layout {
-    flex-direction: column;
-    align-items: center;
-  }
-
+  /* Mobile sidebar overlay behavior */
   .sidebar {
-    display: none;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background-color: #f1f5f9;
-    padding: 20px;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-height: 90vh;
-    overflow-y: auto;
+    position: fixed; /* Fixed position for overlay effect */
+    top: 70px; left: 20px; right: 20px; z-index: 999;
+    background-color: var(--card-bg); padding: 20px; border-radius: 12px;
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    max-height: calc(100vh - 90px); /* Adjust max-height for mobile overlay: (70px from top + 20px bottom margin) */
+    overflow-y: auto; /* Enable internal scrolling for mobile sidebar when active */
+    border: 1px solid var(--border-color);
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.3s ease-in-out; /* Add animation */
   }
-
-  .sidebar.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-
-  .sidebar nav.navbar {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .sidebar nav.navbar a {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-    width: auto;
-  }
-
-  .action-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  .sidebar.active { display: flex; flex-direction: column; align-items: center; } /* Show when active */
+  .sidebar nav.navbar { flex-direction: column; align-items: center; width: 100%; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+  .sidebar nav.navbar a { font-size: 1.05rem; width: 80%; justify-content: center; }
+  .sidebar nav.navbar a i { display: none; } /* Hide icons in mobile nav for cleaner look */
+  .main-content { padding: 30px; }
+  section { margin-bottom: 40px; }
+  .action-row { flex-direction: column; align-items: center; gap: 20px; }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
+.project-link-icon { margin-left: 8px; font-size: 0.9em; color: var(--primary-blue); transition: color 0.2s ease; }
+.project-link-icon:hover { color: #1a7bb9; }
+
   </style>
 </head>
 <body>
@@ -327,49 +304,50 @@ footer {
 </button>
 <div class="layout">
 
-  <!-- ستون چپ: Sidebar -->
   <div class="sidebar">
     <div class="profile-box">
       <img src="erfan_shahabi.jpg" alt="Erfan Shahabi" />
-       <h1>Erfan Shahabi</h1>
-               <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
+      <h1 class="profile-name">Erfan Shahabi</h1>
+      <p class="profile-title">Master's Student | AI & NLP Researcher</p>
 
           <div class="social-icons">
-      <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
-   </div>
+            <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/erfanshahabi" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/erfshahabi" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://t.me/erfan_shahabi" aria-label="Telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+          </div>
 
-      <div class="contact-info">
+          <a href="Erfan_Shahabi_cv.pdf" download class="download-cv-button" aria-label="Download CV">Download CV</a>
 
-        <div class="contact-row">
-          <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-          <a href="tel:+989126404096">+98 912 640 40 96</a>
-        </div>
-        <div class="contact-row">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-          <a href="mailto:ErfanShahabi@outlook.com">ErfanShahabi@outlook.com</a>
+          <div class="contact-info">
+            <div class="contact-row">
+              <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+              <a href="tel:+989126404096">+98 912 640 40 96</a>
+            </div>
+            <div class="contact-row">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:ErfanShahabi@outlook.com">ErfanShahabi@outlook.com</a>
+            </div>
+            <div class="contact-row">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>Tehran, Iran</span>
+            </div>
         </div>
     </div>
 
-
-
     <nav class="navbar">
-      <a href="#about" class="active">About Me</a>
-      <a href="#education">Education</a>
-      <a href="#experiences">Experiences</a>
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#honors">Honors & Awards</a>
-      <a href="#intrests">Interests</a>
+      <a href="#about"><i class="fas fa-user"></i>About Me</a>
+      <a href="#education"><i class="fas fa-graduation-cap"></i>Education</a>
+      <a href="#experiences"><i class="fas fa-briefcase"></i>Experiences</a>
+      <a href="#research"><i class="fas fa-search"></i>Research</a>
+      <a href="#projects"><i class="fas fa-laptop-code"></i>Projects</a>
+      <a href="#skills"><i class="fas fa-cogs"></i>Skills</a>
+      <a href="#honors"><i class="fas fa-award"></i>Honors & Awards</a>
+      <a href="#intrests"><i class="fas fa-heart"></i>Interests</a>
     </nav>
   </div>
-</div>
-  <!-- ستون راست: محتوا -->
-  <div class="main-content">
 
+  <div class="main-content">
 
 <section id="about">
   <h2>About Me</h2>
@@ -387,224 +365,275 @@ footer {
     </div>
   </div>
 </section>
+
 <section id="education">
   <h2>Education</h2>
   <ul>
     <li>
-      <strong>M.Sc. in Information Technology Engineering</strong><br />
-      University of Tehran, Tehran, Iran &mdash; <em>Sep 2024 – Present</em><br />
-      Supervisor: Dr. Azadeh Shakery
+      <h3>M.Sc. in Information Technology Engineering</h3>
+      <p>University of Tehran, Tehran, Iran &mdash; <em>Sep 2024 – Present</em><br />
+      Supervisor: Dr. Azadeh Shakery</p>
     </li>
     <li>
-      <strong>B.Sc. in Industrial Engineering</strong><br />
-      Islamic Azad University, Science and Research Branch, Tehran, Iran &mdash; <em>Sep 2019 – Aug 2023</em><br />
+      <h3>B.Sc. in Industrial Engineering</h3>
+      <p>Islamic Azad University, Science and Research Branch, Tehran, Iran &mdash; <em>Sep 2019 – Aug 2023</em><br />
       Supervisor: Dr. Abbas Saghaei<br />
-      GPA: 4.0 / 4.0 (18.07 / 20)
-
+      GPA: 4.0 / 4.0 (18.07 / 20)</p>
     </li>
   </ul>
 </section>
 
-  <section id="experiences">
-    <h2>Experiences</h2>
+<section id="experiences">
+  <h2>Experiences</h2>
+  <ul>
+    <li>
+      <h3>Natural Language Processing</h3>
+      <p>University Of Tehran - Supervisors: Dr. Hesham Faili<br />
+      Progressed from fundamental NLP concepts to advanced techniques.<br />
+      Implemented a chatbot as the final project using tool-use strategies.<br />
+      Utilized APIs, Transformers, Hugging Face, Langchain, Langgraph, and agents.</p>
+    </li>
+    <li>
+      <h3>Large Language Models</h3>
+      <p>University Of Tehran - Supervisors: Dr. MJ Dousti, Dr. Y Yaghoob Zadeh<br />
+      Gained strong skills working with large language models (LLMs) through multiple practical projects.<br />
+      Worked extensively with APIs, Transformers, Hugging Face, Langchain, Langgraph, and agents.<br />
+      Developed use cases showcasing model integration and API utilization.</p>
+    </li>
+    <li>
+      <h3>Intelligent Information Retrieval</h3>
+      <p>University Of Tehran - Supervisor: Dr. Azadeh Shakery<br />
+      Started with ad-hoc retrieval methods and embeddings.<br />
+      Worked with BERT models for improved retrieval performance.<br />
+      Explored the application of LLMs in retrieval-augmented generation (RAG).</p>
+    </li>
+    <li>
+      <h3>Advanced Data Mining</h3>
+      <p>University Of Tehran - Supervisor: Dr. Azadeh Shakery<br />
+      Learned data fundamentals including cleaning and preprocessing.<br />
+      Covered advanced topics such as data cubes, classification, clustering, and deep learning applications.<br />
+      Applied techniques in real-world datasets.</p>
+    </li>
+    <li>
+      <h3>Social Networks</h3>
+      <p>University Of Tehran - Supervisors: Dr. Masoud Asadpour<br />
+      Studied graph theory, centrality measures, and community detection.<br />
+      Applied concepts to analyze real-world network data through projects.</p>
+    </li>
+  </ul>
+</section>
+
+<section id="research">
+  <h2>Research</h2>
+  <p>As a Research Assistant at the Intelligent Information Systems Laboratory of the University of Tehran under the supervision of Dr. Azadeh Shakery, my research focuses on:</p>
     <ul>
-      <li>
-        <strong>Natural Language Processing</strong><br />
-        University Of Tehran - Supervisors: Dr. Hesham Faili<br />
-        Progressed from fundamental NLP concepts to advanced techniques.<br />
-        Implemented a chatbot as the final project using tool-use strategies.<br />
-        Utilized APIs, Transformers, Hugging Face, Langchain, Langgraph, and agents.
-      </li>
-      <li>
-        <strong>Large Language Models</strong><br />
-        University Of Tehran - Supervisors: Dr. MJ Dousti, Dr. Y Yaghoob Zadeh<br />
-        Gained strong skills working with large language models (LLMs) through multiple practical projects.<br />
-        Worked extensively with APIs, Transformers, Hugging Face, Langchain, Langgraph, and agents.<br />
-        Developed use cases showcasing model integration and API utilization.
-      </li>
-      <li>
-        <strong>Intelligent Information Retrieval</strong><br />
-        University Of Tehran - Supervisor: Dr. Azadeh Shakery<br />
-        Started with ad-hoc retrieval methods and embeddings.<br />
-        Worked with BERT models for improved retrieval performance.<br />
-        Explored the application of LLMs in retrieval-augmented generation (RAG).
-      </li>
-      <li>
-        <strong>Advanced Data Mining</strong><br />
-        University Of Tehran - Supervisor: Dr. Azadeh Shakery<br />
-        Learned data fundamentals including cleaning and preprocessing.<br />
-        Covered advanced topics such as data cubes, classification, clustering, and deep learning applications.<br />
-        Applied techniques in real-world datasets.
-      </li>
-      <li>
-        <strong>Social Networks</strong><br />
-        University Of Tehran - Supervisors: Dr. Masoud Asadpour<br />
-        Studied graph theory, centrality measures, and community detection.<br />
-        Applied concepts to analyze real-world network data through projects.
-      </li>
+      <li>Large Language Models (LLMs) and Machine Behavior</li>
+      <li>Social Intelligence and Human-Computer Interaction (HCI)</li>
+      <li>Cognitive Science in Intelligent Systems</li>
+      <li>Computational Social Science and Emergent Social Behaviors</li>
     </ul>
-  </section>
-  <section id="research">
-    <h2>Research</h2>
-    <ul>
-      As a Research Assistant at the Intelligent Information Systems Laboratory of the University of Tehran under the supervision of Dr. Azadeh Shakery, my research focuses on:<br />
+</section>
 
-        <li>Large Language Models (LLMs) and Machine Behavior</li>
-        <li>Social Intelligence and Human-Computer Interaction (HCI)</li>
-        <li>Cognitive Science in Intelligent Systems</li>
-        <li>Computational Social Science and Emergent Social Behaviors</li>
-    </ul>
-  </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>
+      <h3>NLP:</h3>
+      <ul>
+        <li>NER and Rule-Based Text Processing <a href="https://github.com/erfanshahabi/UT_NLP/blob/main/NLP_CA1_Erfan_Shahabi.ipynb" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Multiview Representation Learning and Evaluation in NLP: Classical IR, Word Embeddings, and Vision-Language Models <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA2" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Deep Learning for Sequence Labeling and Text Summarization with RNNs and Attention <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA3" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Multilingual NER and Efficient Summarization with Large Language Models and Model Compression <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP_CA4_SHAHABI" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Evaluating and Prompt Engineering for Machine Translation using LLM APIs  <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA5" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>ChatFood: Building a ReAct-based Conversational Food Agent with LangGraph and Gemini  <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA6" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+      </ul>
+    </li>
 
+    <li>
+      <h3>LLMs:</h3>
+      <ul>
+        <li>Prompt Engineering and Output Evaluation for LLMs on Persian Question Answering<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/CA1_Shahabi_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Fine-Tuning LLaMA-3.2 using ORPO for Preference-Based Alignment<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/LLM_CA2_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Alignment of Large Language Models via Human Preference Optimization and Direct Preference Objective (DPO)<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/LLM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Quantization-Aware Reasoning and Text-to-SQL Agent Design using ReAct and LangGraph<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/CA4_Shahabi_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>LLM-Based Multi-Agent User Simulation for Evaluating Conversational Recommender Systems<a href="https://github.com/erfanshahabi/UT_LLM" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+      </ul>
+    </li>
 
-  <section id="projects">
-<h2>Projects</h2>
-<ul>
-  <li>
-    <strong>NLP:</strong>
-    <ul>
-      <li>NER and Rule-Based Text Processing <a href="https://github.com/erfanshahabi/UT_NLP/blob/main/NLP_CA1_Erfan_Shahabi.ipynb" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Multiview Representation Learning and Evaluation in NLP: Classical IR, Word Embeddings, and Vision-Language Models <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA2" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Deep Learning for Sequence Labeling and Text Summarization with RNNs and Attention <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA3" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Multilingual NER and Efficient Summarization with Large Language Models and Model Compression <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP_CA4_SHAHABI" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Evaluating and Prompt Engineering for Machine Translation using LLM APIs  <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA5" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>ChatFood: Building a ReAct-based Conversational Food Agent with LangGraph and Gemini  <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA6" target="_blank"><i class="fas fa-link"></i></a></li>
-    </ul>
-  </li>
+    <li>
+      <h3>Intelligent Information Retrieval (IIR):</h3>
+      <ul>
+        <li>Document Ranking and Evaluation using Inverted Index and BM25 Retrieval <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/%20IIR-CA1" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Hyperparameter Sensitivity Analysis of BM25 in Large-Scale Document Retrieval <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/%20IIR-CA2" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Scalable Link Analysis and Opinion Mining using MapReduce, HITS, and PageRank <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/%20IIR-CA3" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Sentiment Classification of IMDB Reviews using Text Preprocessing and Classical IR Techniques <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA4" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Relevance Classification using BERT for Query-Document Pairs in IR Tasks <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA5" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Conversational Search with Retrieval-Augmented Generation: Dataset Construction, RAG Design, and Multi-faceted Evaluation <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA6" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+      </ul>
+    </li>
 
-  <li>
-    <strong>LLMs:</strong>
-    <ul>
-      <li>Prompt Engineering and Output Evaluation for LLMs on Persian Question Answering<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/CA1_Shahabi_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Fine-Tuning LLaMA-3.2 using ORPO for Preference-Based Alignment<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/LLM_CA2_SHAHABI_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Alignment of Large Language Models via Human Preference Optimization and Direct Preference Objective (DPO)<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/LLM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Quantization-Aware Reasoning and Text-to-SQL Agent Design using ReAct and LangGraph<a href="https://github.com/erfanshahabi/UT_LLM/tree/main/CA4_Shahabi_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>LLM-Based Multi-Agent User Simulation for Evaluating Conversational Recommender Systems<a href="https://github.com/erfanshahabi/UT_LLM" target="_blank"><i class="fas fa-link"></i></a></li>
-    </ul>
-  </li>
+    <li>
+      <h3>Machine Learning and Data Analysis:</h3>
+      <ul>
+        <li>Multi-City Real Estate Data Cleaning and Integration for Exploratory Data Mining<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA1_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Designing a Star Schema Data Warehouse for Supermarket Sales Analysis<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA2_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Market Basket Analysis and Association Rule Mining from Online Retail Transactions<a href="https://github.com="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Interactive Comparison of Classification Models using Decision Boundary Visualization<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA4_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Semantic Clustering of StackOverflow Questions using Sentence Embeddings and Dimensionality Reduction<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA5_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Forecasting Community Dynamics in Social Graphs using Multi-Task Graph Neural Networks<a href="https://github.com/erfanshahabi/UT_DM" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
 
-  <li>
-    <strong>Intelligent Information Retrieval (IIR):</strong>
-    <ul>
-      <li>Document Ranking and Evaluation using Inverted Index and BM25 Retrieval <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/%20IIR-CA1" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Hyperparameter Sensitivity Analysis of BM25 in Large-Scale Document Retrieval <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/%20IIR-CA2" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Scalable Link Analysis and Opinion Mining using MapReduce, HITS, and PageRank <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/%20IIR-CA3" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Sentiment Classification of IMDB Reviews using Text Preprocessing and Classical IR Techniques <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA4" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Relevance Classification using BERT for Query-Document Pairs in IR Tasks <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA5" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Conversational Search with Retrieval-Augmented Generation: Dataset Construction, RAG Design, and Multi-faceted Evaluation <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA6" target="_blank"><i class="fas fa-link"></i></a></li>
+<section id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Soft Skills:</strong> Teamwork, Meeting Tight Deadlines</li>
+    <li><strong>Programming Languages:</strong> Python, Javascript</li>
+    <li><strong>Large Language Models:</strong> Hugging Face, LangChain, LangGraph, Unsloth, PEFT, Datasets, TRL</li>
+    <li><strong>Databases:</strong> SQL, LanceDB</li>
+    <li><strong>Machine Learning:</strong> PyTorch, Scikit Learn, evaluate, TensorFlow</li>
+    <li><strong>Retrieval:</strong> Sentence Transformers, Lexical Retrieval, Semantic Retrieval, BM25</li>
+    <li><strong>Languages:</strong> English (Advanced), Persian (Native)</li>
+  </ul>
+</section>
 
-    </ul>
-  </li>
+<section id="honors">
+  <h2>Honors and Awards</h2>
+  <ul>
+    <li>Ranked 14 in Nationwide Graduate Level University Entrance Test of Information Technology Engineering</li>
+  </ul>
+</section>
 
-  <li>
-    <strong>Machine Learning and Data Analysis:</strong>
-    <ul>
-      <li>Multi-City Real Estate Data Cleaning and Integration for Exploratory Data Mining<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA1_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Designing a Star Schema Data Warehouse for Supermarket Sales Analysis<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA2_SHAHABI_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Market Basket Analysis and Association Rule Mining from Online Retail Transactions<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Interactive Comparison of Classification Models using Decision Boundary Visualization<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA4_SHAHABI_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Semantic Clustering of StackOverflow Questions using Sentence Embeddings and Dimensionality Reduction<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA5_810103166" target="_blank"><i class="fas fa-link"></i></a></li>
-      <li>Forecasting Community Dynamics in Social Graphs using Multi-Task Graph Neural Networks<a href="https://github.com/erfanshahabi/UT_DM" target="_blank"><i class="fas fa-link"></i></a></li>
-
-
-    </ul>
-  </li>
-</ul>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Soft Skills: Teamwork, Meeting Tight Deadlines</li>
-      <li>Programming Languages: Python, Javascript</li>
-      <li>Large Language Models: Hugging Face, LangChain, Lang graph, Unsloth, PEFT, Datasets, TRL</li>
-      <li>Databases: SQL, lanceDB</li>
-      <li>Machine Learning: PyTorch, Scikit Learn, evaluate, TensorFlow</li>
-      <li>Retrieval: Sentence Transformers, Lexical Retrieval, Semantic Retrieval, BM25</li>
-      <li>English (Advanced)</li>
-    </ul>
-  </section>
-  <section id="honors">
-    <h2>Honors and Awards</h2>
-    <ul>
-      <li>Ranked 14 in Nationwide Graduate Level University Entrance Test of Information Technology Engineering</li>
-    </ul>
-  </section>
-  <section id="intrests">
-    <h2>Intrests</h2>
-    <ul>
-      <li>Exploring recent research in Artificial Intelligence and Natural Language Processing</li>
-      <li>Studying Social Intelligence, Cognitive Science, and Human-Computer Interaction</li>
-      <li>Researching Computational Social Science and emergent social behaviors</li>
-      <li>Outdoor activities like hiking and nature walks for balance and inspiration</li>
-    </ul>
-  </section>
+<section id="intrests">
+  <h2>Interests</h2>
+  <ul>
+    <li>Exploring recent research in Artificial Intelligence and Natural Language Processing</li>
+    <li>Studying Social Intelligence, Cognitive Science, and Human-Computer Interaction</li>
+    <li>Researching Computational Social Science and emergent social behaviors</li>
+    <li>Outdoor activities like hiking and nature walks for balance and inspiration</li>
+  </ul>
+</section>
 
   <footer>
-    © 2025 Erfan Shahabi.
+    © 2025 Erfan Shahabi. All rights reserved.
   </footer>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('Script loaded.'); // Simple log to confirm script execution
   const hamburger = document.querySelector('.hamburger');
   const sidebar = document.querySelector('.sidebar');
   const navLinks = document.querySelectorAll('.navbar a');
+  const sections = document.querySelectorAll('section');
 
-  // باز و بسته کردن منو در موبایل
+  // Offset for scrolling to section top, accounting for sticky elements or padding.
+  // This value should typically match the `top` value of your sticky sidebar.
+  const scrollOffset = 30;
+  // A buffer zone (in pixels) above the section's actual start.
+  // This helps make the link active a little before the section fully reaches the top, for smoother UX.
+  const activeLinkBuffer = 150;
+
+  // --- Function to set active link based on scroll position ---
+  function setActiveLinkOnScroll() {
+    let currentActiveSectionId = '';
+    const scrollPosition = window.scrollY;
+
+    sections.forEach(section => {
+      // Calculate the point at which this section should become 'active'
+      // It's the section's top offset minus our desired padding/sticky offset, AND then minus an additional buffer.
+      // This means the link activates when the section is `activeLinkBuffer` pixels *before* the top visible line.
+      const sectionTopForActive = section.offsetTop - scrollOffset - activeLinkBuffer;
+      const sectionBottomForActive = section.offsetTop + section.offsetHeight - scrollOffset;
+
+      if (scrollPosition >= sectionTopForActive && scrollPosition < sectionBottomForActive) {
+        currentActiveSectionId = section.id;
+      }
+    });
+
+    // Special handling for the very bottom of the page:
+    // Ensures the last link is active when scrolled fully down, even if its section is short.
+    // Check if user has scrolled to near the very end of the document
+    if ((window.innerHeight + scrollPosition) >= (document.body.offsetHeight - 5)) { // -5 for a small tolerance
+      if (sections.length > 0) {
+        currentActiveSectionId = sections[sections.length - 1].id;
+      }
+    }
+
+    // Apply/remove 'active' class to navigation links
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentActiveSectionId}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // --- Initial active link setting on page load ---
+  // If page loaded with a hash (e.g., yoursite.com/#education)
+  if (window.location.hash) {
+      const initialLink = document.querySelector(`.navbar a[href="${window.location.hash}"]`);
+      if (initialLink) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          initialLink.classList.add('active');
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            // Scroll to the target, adjusting for the sticky sidebar's top value
+            window.scrollTo({
+                top: target.offsetTop - scrollOffset,
+                behavior: 'smooth'
+            });
+          }
+      }
+  } else {
+      // If no hash, set the first navigation link (About Me) as active initially
+      if (navLinks.length > 0) {
+        navLinks[0].classList.add('active');
+      }
+  }
+
+  // --- Toggle mobile menu ---
   hamburger.addEventListener('click', () => {
     sidebar.classList.toggle('active');
   });
 
-  // کلیک روی لینک‌ها: اسکرول نرم و بستن منو (در موبایل)
+  // --- Smooth scroll and close menu (on mobile) when a nav link is clicked ---
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      if (this.hash !== '') {
-        e.preventDefault();
+      e.preventDefault(); // Prevent default instant jump behavior
 
-        const target = document.querySelector(this.hash);
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,  // تنظیم مطابق scroll-margin-top
-            behavior: 'smooth'
-          });
-        }
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
 
-        if (window.innerWidth <= 768) {
-          sidebar.classList.remove('active');
-        }
+      if (targetSection) {
+        // Calculate the exact scroll position, accounting for sticky elements
+        const targetScrollPosition = targetSection.offsetTop - scrollOffset;
+
+        window.scrollTo({
+          top: targetScrollPosition,
+          behavior: 'smooth'
+        });
+      }
+
+      // Immediately update active class on click for instant visual feedback
+      navLinks.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+
+      // Close sidebar if it's the mobile view and sidebar is currently open
+      if (window.innerWidth <= 991) {
+        sidebar.classList.remove('active');
       }
     });
   });
 
-  // پیدا کردن لینک فعال هنگام اسکرول (با پشتیبانی از سکشن آخر)
-  function setActiveLink() {
-    let currentLink = null;
+  // --- Attach event listeners for scroll to update active link ---
+  // Using { passive: true } for better scroll performance
+  window.addEventListener('scroll', setActiveLinkOnScroll, { passive: true });
 
-    navLinks.forEach((link, index) => {
-      const section = document.querySelector(link.hash);
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-
-      const isInView = rect.top <= 100 && rect.bottom >= 100;
-      const isLast = index === navLinks.length - 1;
-      const atPageBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
-
-      if (isInView || (isLast && atPageBottom)) {
-        currentLink = link;
-      }
-    });
-
-    navLinks.forEach(link => link.classList.remove('active'));
-    if (currentLink) currentLink.classList.add('active');
-  }
-
-  // فعال‌سازی در اسکرول و بارگذاری اولیه
-  window.addEventListener('scroll', setActiveLink);
-  setActiveLink(); // اجرای اولیه
+  // Call on initial load to set the active link (important if page is refreshed or visited without scrolling)
+  setActiveLinkOnScroll();
 });
 </script>
 </body>
