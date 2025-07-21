@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erfan Shahabi - Personal Website</title>
   <meta name="description" content="I'm a Master's student in IT Engineering at University of Tehran, passionate about NLP, LLMs, and AI research.">
   <meta name="google-site-verification" content="yc-6k8sx2Q1evW53FMfhIwzdmOqgNxCe33WKg9JWGkg" />
@@ -29,10 +29,10 @@
 }
 
 html, body {
-  height: 100%; /* Important: Ensures html and body take full viewport height */
-  min-height: 100%; /* Ensures minimum height, crucial for sticky parent */
-  overflow-y: auto; /* The main scrollbar for the page */
-  scroll-behavior: smooth; /* For smoother scrolling to sections */
+  height: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -41,7 +41,7 @@ body {
   color: var(--dark-text);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px 20px 80px; /* Overall page padding */
+  padding: 30px 20px 80px;
   line-height: 1.6;
 }
 
@@ -84,10 +84,8 @@ a:hover {
   display: flex;
   flex-direction: row;
   gap: 60px;
-  /* Crucial for sticky: Ensures the flex container is tall enough for sidebar to stick within */
-  min-height: calc(100vh - 30px - 80px); /* 100vh - (body top padding + body bottom padding) */
-  align-items: flex-start; /* Align flex items to the top */
-  /* NO overflow: hidden/scroll/auto here. This is key for sticky. */
+  min-height: calc(100vh - 30px - 80px);
+  align-items: flex-start;
 }
 
 /* Sidebar Styling */
@@ -102,16 +100,12 @@ a:hover {
   border-radius: 12px;
   box-shadow: 0 8px 25px var(--shadow-light);
   border: 1px solid var(--border-color);
-
-  /* Make sidebar sticky on larger screens */
   position: sticky;
-  top: 30px; /* This must match the body's top padding for smooth stick effect */
-
-  /* For internal sidebar scrolling if its content is too long */
-  height: fit-content; /* Allows sidebar to take only the height of its content initially */
-  max-height: calc(100vh - 60px); /* 100vh - (sticky top value + some bottom margin/padding for visual space) */
-  overflow-y: auto; /* Enables internal scrolling for sidebar content if content overflows */
-  -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
+  top: 30px;
+  height: fit-content;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Sidebar internal components */
@@ -168,13 +162,12 @@ a:hover {
 
 /* Main Content Styling */
 .main-content {
-  flex: 1; /* Allows main content to take remaining space */
+  flex: 1;
   background-color: var(--card-bg);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 8px 25px var(--shadow-light);
   border: 1px solid var(--border-color);
-  /* NO overflow: hidden/scroll/auto here either */
 }
 
 /* Profile Box & Social Icons */
@@ -221,8 +214,7 @@ section {
   margin-bottom: 50px;
   padding-bottom: 20px;
   border-bottom: 1px dashed var(--border-color);
-  /* scroll-margin-top helps when linking directly to an ID, preventing content from being hidden under sticky elements */
-  scroll-margin-top: 100px; /* Adjust this value if you have a fixed header or if content gets cut off */
+  scroll-margin-top: 100px;
 }
 
 section:last-of-type {
@@ -253,7 +245,7 @@ footer {
 
 /* Mobile Hamburger and Sidebar Overlay */
 .hamburger {
-  display: none; /* Hidden on desktop */
+  display: none;
   position: fixed; top: 20px; left: 20px; z-index: 1000;
   background: var(--card-bg); border: 1px solid var(--border-color);
   padding: 10px 12px; border-radius: 8px; font-size: 1.6rem;
@@ -264,25 +256,25 @@ footer {
 
 @media (max-width: 991px) {
   .hamburger { display: block; }
-  body { padding: 20px; } /* Adjust body padding for mobile view */
-  .layout { flex-direction: column; gap: 30px; min-height: auto; } /* Stack vertically */
+  body { padding: 20px; }
+  .layout { flex-direction: column; gap: 30px; min-height: auto; }
 
   /* Mobile sidebar overlay behavior */
   .sidebar {
-    position: fixed; /* Fixed position for overlay effect */
+    position: fixed;
     top: 70px; left: 20px; right: 20px; z-index: 999;
     background-color: var(--card-bg); padding: 20px; border-radius: 12px;
     box-shadow: 0 10px 25px var(--shadow-medium);
-    max-height: calc(100vh - 90px); /* Adjust max-height for mobile overlay: (70px from top + 20px bottom margin) */
-    overflow-y: auto; /* Enable internal scrolling for mobile sidebar when active */
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
     border: 1px solid var(--border-color);
-    display: none; /* Hidden by default */
-    animation: fadeIn 0.3s ease-in-out; /* Add animation */
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
   }
-  .sidebar.active { display: flex; flex-direction: column; align-items: center; } /* Show when active */
+  .sidebar.active { display: flex; flex-direction: column; align-items: center; }
   .sidebar nav.navbar { flex-direction: column; align-items: center; width: 100%; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); }
   .sidebar nav.navbar a { font-size: 1.05rem; width: 80%; justify-content: center; }
-  .sidebar nav.navbar a i { display: none; } /* Hide icons in mobile nav for cleaner look */
+  .sidebar nav.navbar a i { display: none; }
   .main-content { padding: 30px; }
   section { margin-bottom: 40px; }
   .action-row { flex-direction: column; align-items: center; gap: 20px; }
@@ -477,10 +469,10 @@ footer {
       <ul>
         <li>Multi-City Real Estate Data Cleaning and Integration for Exploratory Data Mining<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA1_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
         <li>Designing a Star Schema Data Warehouse for Supermarket Sales Analysis<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA2_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
-        <li>Market Basket Analysis and Association Rule Mining from Online Retail Transactions<a href="https://github.com="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
-        <li>Interactive Comparison of Classification Models using Decision Boundary Visualization<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA4_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Market Basket Analysis and Association Rule Mining from Online Retail Transactions<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Interactive Comparison of Classification Models using Decision Boundary Visualization<a href="https://github.com/erfanshahabi/UT_DM/tree=" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
         <li>Semantic Clustering of StackOverflow Questions using Sentence Embeddings and Dimensionality Reduction<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA5_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
-        <li>Forecasting Community Dynamics in Social Graphs using Multi-Task Graph Neural Networks<a href="https://github.com/erfanshahabi/UT_DM" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+        <li>Forecasting Community Dynamics in Social Graphs using Multi-Task Graph Neural Networks<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA6_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
       </ul>
     </li>
   </ul>
@@ -520,49 +512,42 @@ footer {
     © 2025 Erfan Shahabi. All rights reserved.
   </footer>
 </div>
-
-<script>
+  <script>
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('Script loaded.'); // Simple log to confirm script execution
   const hamburger = document.querySelector('.hamburger');
   const sidebar = document.querySelector('.sidebar');
   const navLinks = document.querySelectorAll('.navbar a');
   const sections = document.querySelectorAll('section');
 
   // Offset for scrolling to section top, accounting for sticky elements or padding.
-  // This value should typically match the `top` value of your sticky sidebar.
-  const scrollOffset = 30;
+  const SCROLL_OFFSET = 30;
   // A buffer zone (in pixels) above the section's actual start.
-  // This helps make the link active a little before the section fully reaches the top, for smoother UX.
-  const activeLinkBuffer = 150;
+  const ACTIVE_LINK_BUFFER = 150; // Helps make the link active slightly before the section fully reaches the top
 
-  // --- Function to set active link based on scroll position ---
+  /**
+   * Sets the active navigation link based on the current scroll position.
+   */
   function setActiveLinkOnScroll() {
     let currentActiveSectionId = '';
     const scrollPosition = window.scrollY;
 
     sections.forEach(section => {
-      // Calculate the point at which this section should become 'active'
-      // It's the section's top offset minus our desired padding/sticky offset, AND then minus an additional buffer.
-      // This means the link activates when the section is `activeLinkBuffer` pixels *before* the top visible line.
-      const sectionTopForActive = section.offsetTop - scrollOffset - activeLinkBuffer;
-      const sectionBottomForActive = section.offsetTop + section.offsetHeight - scrollOffset;
+      const sectionTopForActive = section.offsetTop - SCROLL_OFFSET - ACTIVE_LINK_BUFFER;
+      const sectionBottomForActive = section.offsetTop + section.offsetHeight - SCROLL_OFFSET;
 
       if (scrollPosition >= sectionTopForActive && scrollPosition < sectionBottomForActive) {
         currentActiveSectionId = section.id;
       }
     });
 
-    // Special handling for the very bottom of the page:
-    // Ensures the last link is active when scrolled fully down, even if its section is short.
-    // Check if user has scrolled to near the very end of the document
-    if ((window.innerHeight + scrollPosition) >= (document.body.offsetHeight - 5)) { // -5 for a small tolerance
+    // Handle the very bottom of the page to activate the last section's link
+    if ((window.innerHeight + scrollPosition) >= (document.body.offsetHeight - 5)) {
       if (sections.length > 0) {
         currentActiveSectionId = sections[sections.length - 1].id;
       }
     }
 
-    // Apply/remove 'active' class to navigation links
+    // Apply/remove 'active' class
     navLinks.forEach(link => {
       link.classList.remove('active');
       if (link.getAttribute('href') === `#${currentActiveSectionId}`) {
@@ -571,46 +556,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // --- Initial active link setting on page load ---
-  // If page loaded with a hash (e.g., yoursite.com/#education)
-  if (window.location.hash) {
+  /**
+   * Handles initial page load behavior for navigation links.
+   */
+  function initializePageLoad() {
+    if (window.location.hash) {
       const initialLink = document.querySelector(`.navbar a[href="${window.location.hash}"]`);
       if (initialLink) {
           navLinks.forEach(link => link.classList.remove('active'));
           initialLink.classList.add('active');
           const target = document.querySelector(window.location.hash);
           if (target) {
-            // Scroll to the target, adjusting for the sticky sidebar's top value
             window.scrollTo({
-                top: target.offsetTop - scrollOffset,
+                top: target.offsetTop - SCROLL_OFFSET,
                 behavior: 'smooth'
             });
           }
       }
-  } else {
+    } else {
       // If no hash, set the first navigation link (About Me) as active initially
       if (navLinks.length > 0) {
         navLinks[0].classList.add('active');
       }
+    }
+    setActiveLinkOnScroll(); // Ensure correct link is active on initial load
   }
 
-  // --- Toggle mobile menu ---
+  // --- Event Listeners ---
+
+  // Toggle mobile menu
   hamburger.addEventListener('click', () => {
     sidebar.classList.toggle('active');
   });
 
-  // --- Smooth scroll and close menu (on mobile) when a nav link is clicked ---
+  // Smooth scroll and close menu (on mobile) when a nav link is clicked
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault(); // Prevent default instant jump behavior
+      e.preventDefault();
 
       const targetId = this.getAttribute('href');
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        // Calculate the exact scroll position, accounting for sticky elements
-        const targetScrollPosition = targetSection.offsetTop - scrollOffset;
-
+        const targetScrollPosition = targetSection.offsetTop - SCROLL_OFFSET;
         window.scrollTo({
           top: targetScrollPosition,
           behavior: 'smooth'
@@ -628,13 +616,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // --- Attach event listeners for scroll to update active link ---
-  // Using { passive: true } for better scroll performance
+  // Attach event listeners for scroll to update active link
   window.addEventListener('scroll', setActiveLinkOnScroll, { passive: true });
 
-  // Call on initial load to set the active link (important if page is refreshed or visited without scrolling)
-  setActiveLinkOnScroll();
+  // Initialize on DOM content loaded
+  initializePageLoad();
 });
 </script>
+ </div>
 </body>
 </html>
