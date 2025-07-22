@@ -539,89 +539,147 @@
       const sections = document.querySelectorAll('section');
 
       // Get the computed value of scroll-margin-top from the CSS for sections.
-      // This is crucial for active state highlighting to match the visual scroll position.
+      // This is crucial for active state highlighting to match the visual scroll position,
+      // as `scroll-margin-top` creates a "virtual" margin at the top of the section
+      // when it's scrolled into view, to prevent content from being hidden by sticky elements.
       const sectionStyle = getComputedStyle(document.querySelector('section'));
       const sectionScrollMarginTop = parseFloat(sectionStyle.getPropertyValue('scroll-margin-top'));
 
-      // A small buffer to ensure the active state changes slightly before the section hits the exact trigger point.
-      // This helps in fine-tuning when the active state should switch.
-      const ACTIVE_LINK_OFFSET_BUFFER = sectionScrollMarginTop + 5; // Add a small extra buffer (e.g., 5px)
+      // The buffer added to the scroll-margin-top. This helps in fine-tuning
+      // when the active state should switch, ensuring it feels natural as the section
+      // heading comes into full view below the sticky sidebar.
+      // Increased the buffer to make the active state switch earlier as you scroll down.
+      const ACTIVE_LINK_OFFSET_BUFFER = sectionScrollMarginTop + 20;
 
       /**
        * Sets the active navigation link based on the current scroll position.
-       * This function is optimized to work well with CSS `scroll-margin-top` and a sticky sidebar.
+       * This function "observes" the content by checking which section is currently
+       * at or past the calculated "trigger point" in the viewport.
        */
       function setActiveLinkOnScroll() {
         let currentActiveSectionId = '';
+        // Get the current vertical scroll position of the document.
         const scrollPosition = window.scrollY;
 
-        // Iterate sections in reverse to prioritize sections higher up in the viewport.
-        // This helps when sections are very close or overlap visually due to margins/padding.
+        // Log scroll position for debugging
+        // console.log('Current Scroll Position:', scrollPosition); // Keep commented unless actively debugging
+
+        // Iterate sections in reverse order. This is important because if multiple
+        // sections are partially visible (e.g., at the bottom of the viewport),
+        // we want to activate the link for the section whose *top* is currently
+        // in view or has just passed the "active" threshold.
         for (let i = sections.length - 1; i >= 0; i--) {
           const section = sections[i];
-          // Determine the visual top of the section. When scrollPosition reaches this point,
-          // the section should be considered active, accounting for the sticky sidebar's position.
+          // Calculate the point at which this section should be considered "active".
+          // This is its distance from the top of the document (`offsetTop`) minus
+          // the `ACTIVE_LINK_OFFSET_BUFFER` which accounts for the sticky sidebar
+          // and the `scroll-margin-top` CSS property.
           const sectionTriggerPoint = section.offsetTop - ACTIVE_LINK_OFFSET_BUFFER;
 
+          // Log section details for debugging
+          // console.log(`Section: ${section.id}, OffsetTop: ${section.offsetTop}, TriggerPoint: ${sectionTriggerPoint}`); // Keep commented unless actively debugging
+
+          // If the current scroll position is at or beyond this section's trigger point,
+          // then this section is the highest one currently in view that should be active.
           if (scrollPosition >= sectionTriggerPoint) {
             currentActiveSectionId = section.id;
             break; // Found the highest section in view, stop checking.
           }
         }
 
-        // Apply/remove 'active' class to navigation links
+        // Apply/remove the 'active' class to navigation links based on the
+        // `currentActiveSectionId` determined above.
+        let activeLinkElement = null;
         navLinks.forEach(link => {
-          link.classList.remove('active');
+          link.classList.remove('active'); // Remove active from all links first
+          // If the link's href matches the ID of the current active section, add the class.
           if (link.getAttribute('href') === `#${currentActiveSectionId}`) {
             link.classList.add('active');
+            activeLinkElement = link; // Store the active link element
           }
         });
+
+        // --- NEW LOGIC: Scroll sidebar to bring active link into view ---
+        if (activeLinkElement && sidebar) {
+            const sidebarRect = sidebar.getBoundingClientRect();
+            const activeLinkRect = activeLinkElement.getBoundingClientRect();
+
+            // Check if the active link is outside the visible area of the sidebar
+            // If the top of the link is above the sidebar's top, or its bottom is below the sidebar's bottom
+            if (activeLinkRect.top < sidebarRect.top || activeLinkRect.bottom > sidebarRect.bottom) {
+                // Scroll the sidebar to bring the active link into view
+                // 'nearest' ensures it scrolls just enough to make it visible
+                activeLinkElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest', // Scrolls the parent container (sidebar) to make the element visible
+                    inline: 'nearest'
+                });
+            }
+        }
+        // --- END NEW LOGIC ---
       }
 
       /**
        * Handles initial page load behavior for navigation links.
-       * Ensures the correct link is active if loaded with a hash or at a scrolled position.
+       * Ensures the correct link is active if loaded with a URL hash (e.g., #about)
+       * or if the page is simply reloaded while scrolled down.
        */
       function initializePageLoad() {
         if (window.location.hash) {
-          // If loaded with a hash (e.g., yoursite.com/#about), the browser handles the initial scroll.
-          // We just need to activate the corresponding link.
+          // If the URL contains a hash, the browser will automatically scroll to that section.
+          // We just need to ensure the corresponding navigation link is highlighted.
           const initialLink = document.querySelector(`.navbar a[href="${window.location.hash}"]`);
           if (initialLink) {
             navLinks.forEach(link => link.classList.remove('active'));
             initialLink.classList.add('active');
           }
         } else {
-          // If no hash, default to the first navigation link being active (e.g., "About Me").
+          // If no hash is present (e.g., first visit or root URL),
+          // default to making the first navigation link active (e.g., "About Me").
           if (navLinks.length > 0) {
             navLinks[0].classList.add('active');
           }
         }
-        // Always call on load to ensure the active state is correct for the current scroll position,
-        // in case the page is reloaded while scrolled down.
+        // Always call `setActiveLinkOnScroll` on load. This is crucial for cases
+        // where the user reloads the page while already scrolled down, ensuring
+        // the active link is correctly set for the current scroll position.
         setActiveLinkOnScroll();
       }
 
       // --- Event Listeners ---
 
-      // Toggle mobile menu for the hamburger icon
+      // Toggle mobile menu visibility when the hamburger icon is clicked.
       hamburger.addEventListener('click', () => {
         sidebar.classList.toggle('active');
-        // Prevent body scrolling when mobile menu is open (good UX)
+        // Add/remove 'no-scroll' class to the body to prevent background scrolling
+        // when the mobile menu (sidebar) is open. This improves user experience.
         document.body.classList.toggle('no-scroll', sidebar.classList.contains('active'));
+        // When opening the mobile menu, ensure the active link is visible
+        if (sidebar.classList.contains('active')) {
+            const currentlyActiveLink = document.querySelector('.navbar a.active');
+            if (currentlyActiveLink) {
+                currentlyActiveLink.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'nearest'
+                });
+            }
+        }
       });
 
-      // Handle clicks on navigation links
+      // Handle clicks on navigation links within the sidebar.
       navLinks.forEach(link => {
         link.addEventListener('click', function () {
-          // The browser's default anchor scrolling with `scroll-behavior: smooth` and `scroll-margin-top`
-          // handles the smooth scroll. No need for `e.preventDefault()` or manual `window.scrollTo()`.
+          // When a navigation link is clicked, the browser's default anchor scrolling
+          // (enabled by `scroll-behavior: smooth` in CSS) will smoothly scroll to the target section.
+          // The `scroll-margin-top` CSS property ensures the section heading isn't hidden by the sticky sidebar.
+          // Therefore, `e.preventDefault()` and manual `window.scrollTo()` are not needed here.
 
-          // Immediately update active class for instant feedback on click
+          // Immediately update the active class for instant visual feedback on click.
           navLinks.forEach(nav => nav.classList.remove('active'));
           this.classList.add('active');
 
-          // Close sidebar if it's the mobile view and the sidebar is currently open
+          // If in mobile view and the sidebar is open, close it after a link is clicked.
           if (window.innerWidth <= 991) {
             sidebar.classList.remove('active');
             document.body.classList.remove('no-scroll');
@@ -629,10 +687,14 @@
         });
       });
 
-      // Attach event listener for scroll to update active link
+      // Attach an event listener to the window's scroll event.
+      // The `setActiveLinkOnScroll` function will be called every time the user scrolls,
+      // updating the active navigation link dynamically.
+      // `{ passive: true }` is used to improve scroll performance by telling the browser
+      // that the event listener will not call `preventDefault()`.
       window.addEventListener('scroll', setActiveLinkOnScroll, { passive: true });
 
-      // Initialize on DOM content loaded
+      // Call the initialization function once the DOM content is fully loaded.
       initializePageLoad();
     });
   </script>
