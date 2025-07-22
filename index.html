@@ -95,20 +95,20 @@
 
     /* Sidebar Styling - Sticky for Desktop, Overlay for Mobile */
     .sidebar {
-      min-width: 280px;
-      max-width: 320px;
+      min-width: 280px; /* Reverted to original */
+      max-width: 320px; /* Reverted to original */
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px;
+      padding: 30px; /* Reverted to original */
       background-color: var(--card-bg);
       border-radius: 12px;
       box-shadow: 0 8px 25px var(--shadow-light);
       border: 1px solid var(--border-color);
       position: sticky; /* Makes it stick when scrolling */
-      top: 30px; /* Sticks when it reaches 30px from the top of the viewport */
+      top: 30px; /* Reverted to original */
       height: fit-content; /* Adjusts height to content */
-      max-height: calc(100vh - 60px); /* Limits height to viewport, maintaining padding */
+      max-height: calc(100vh - 60px); /* Reverted to original */
       overflow-y: auto; /* Allows internal scrolling if sidebar content is too tall */
       -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
     }
@@ -222,9 +222,8 @@
       /* This is the key for jump links and scroll spy.
          It creates an "empty" space above the section when scrolling to it,
          so the heading isn't hidden by the sticky sidebar.
-         Calculated as: body-padding-top (30px) + sidebar-top (30px) + small_buffer (10px) = 70px.
-         Adjust `10px` buffer if needed for perfect visual alignment. */
-      scroll-margin-top: calc(30px + 30px + 10px);
+         Calculated as: body-padding-top (30px) + sidebar-top (30px) + small_buffer (10px) = 70px. */
+      scroll-margin-top: calc(30px + 30px + 10px); /* Reverted to original */
     }
 
     section:last-of-type {
@@ -485,8 +484,8 @@
             <h3>Machine Learning and Data Analysis:</h3>
             <ul>
               <li>Multi-City Real Estate Data Cleaning and Integration for Exploratory Data Mining<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA1_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
-              <li>Designing a Star Schema Data Warehouse for Supermarket Sales Analysis<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA2_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
-              <li>Market Basket Analysis and Association Rule Mining from Online Retail Transactions<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA3_SHAHABI_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+              <li>Designing a Star Schema Data Warehouse for Supermarket Sales Analysis<a href="https://github.com/erfanshahabi/UT_DM/tree=" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
+              <li>Market Basket Analysis and Association Rule Mining from Online Retail Transactions<a href="https://github.com/erfanshahabi/UT_DM/tree=" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
               <li>Interactive Comparison of Classification Models using Decision Boundary Visualization<a href="https://github.com/erfanshahabi/UT_DM/tree=" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
               <li>Semantic Clustering of StackOverflow Questions using Sentence Embeddings and Dimensionality Reduction<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA5_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
               <li>Forecasting Community Dynamics in Social Graphs using Multi-Task Graph Neural Networks<a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA6_810103166" target="_blank"><i class="fas fa-external-link-alt project-link-icon"></i></a></li>
@@ -548,8 +547,7 @@
       // The buffer added to the scroll-margin-top. This helps in fine-tuning
       // when the active state should switch, ensuring it feels natural as the section
       // heading comes into full view below the sticky sidebar.
-      // Increased the buffer to make the active state switch earlier as you scroll down.
-      const ACTIVE_LINK_OFFSET_BUFFER = sectionScrollMarginTop + 20;
+      const ACTIVE_LINK_OFFSET_BUFFER = sectionScrollMarginTop + 10; // Reverted to original buffer
 
       /**
        * Sets the active navigation link based on the current scroll position.
@@ -560,9 +558,6 @@
         let currentActiveSectionId = '';
         // Get the current vertical scroll position of the document.
         const scrollPosition = window.scrollY;
-
-        // Log scroll position for debugging
-        // console.log('Current Scroll Position:', scrollPosition); // Keep commented unless actively debugging
 
         // Iterate sections in reverse order. This is important because if multiple
         // sections are partially visible (e.g., at the bottom of the viewport),
@@ -575,9 +570,6 @@
           // the `ACTIVE_LINK_OFFSET_BUFFER` which accounts for the sticky sidebar
           // and the `scroll-margin-top` CSS property.
           const sectionTriggerPoint = section.offsetTop - ACTIVE_LINK_OFFSET_BUFFER;
-
-          // Log section details for debugging
-          // console.log(`Section: ${section.id}, OffsetTop: ${section.offsetTop}, TriggerPoint: ${sectionTriggerPoint}`); // Keep commented unless actively debugging
 
           // If the current scroll position is at or beyond this section's trigger point,
           // then this section is the highest one currently in view that should be active.
@@ -599,7 +591,7 @@
           }
         });
 
-        // --- NEW LOGIC: Scroll sidebar to bring active link into view ---
+        // --- Logic to scroll sidebar to bring active link into view ---
         if (activeLinkElement && sidebar) {
             const sidebarRect = sidebar.getBoundingClientRect();
             const activeLinkRect = activeLinkElement.getBoundingClientRect();
@@ -615,6 +607,12 @@
                     inline: 'nearest'
                 });
             }
+        }
+        // --- END Logic ---
+
+        // --- NEW LOGIC: Scroll sidebar to top when main page is at the very top ---
+        if (scrollPosition === 0 && sidebar) {
+            sidebar.scrollTop = 0; // Reset sidebar's internal scroll to the very top
         }
         // --- END NEW LOGIC ---
       }
