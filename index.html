@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erfan Shahabi - AI Researcher</title>
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="apple-touch-icon" href="logo.svg">
   <meta name="description" content="Master's student in IT Engineering at University of Tehran, researching NLP, LLMs, and Machine Behavior.">
@@ -12,11 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --primary: #2c5282;
       --primary-light: #4a90e2;
@@ -32,13 +27,9 @@
       --border: #e2e8f0;
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
       --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-      
-      /* Single color shadow for sections */
       --shadow-colored: 0 8px 24px rgba(44, 82, 130, 0.12);
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
       background: var(--bg-body);
@@ -47,474 +38,101 @@
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
-    body.no-scroll {
-      overflow: hidden;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Crimson Pro', serif;
-      color: var(--text-primary);
-      font-weight: 600;
-      line-height: 1.3;
-    }
+    body.no-scroll { overflow: hidden; }
+    h1, h2, h3, h4 { font-family: 'Crimson Pro', serif; color: var(--text-primary); font-weight: 600; line-height: 1.3; }
     h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
     h2 { font-size: 1.5rem; margin-bottom: 1rem; letter-spacing: -0.01em; }
     h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    a:hover {
-      color: var(--primary-light);
-    }
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    /* Layout */
-    .layout {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    /* Sidebar */
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s ease; }
+    a:hover { color: var(--primary-light); }
+    .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+    .layout { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items: start; }
     .sidebar {
-      position: sticky;
-      top: 1.5rem;
-      background: var(--bg-card);
-      border-radius: 16px;
-      box-shadow: var(--shadow-colored);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      max-height: calc(100vh - 3rem);
-      display: flex;
-      flex-direction: column;
+      position: sticky; top: 1.5rem;
+      background: var(--bg-card); border-radius: 16px;
+      box-shadow: var(--shadow-colored); border: 1px solid var(--border);
+      overflow: hidden; max-height: calc(100vh - 3rem);
+      display: flex; flex-direction: column;
     }
-    
-    .sidebar::-webkit-scrollbar {
-      width: 6px;
-    }
-    .sidebar::-webkit-scrollbar-track {
-      background: var(--bg-sidebar);
-    }
-    .sidebar::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 3px;
-    }
-    .sidebar::-webkit-scrollbar-thumb:hover {
-      background: var(--text-muted);
-    }
-    
-    .profile {
-      text-align: center;
-      padding: 2rem 1.5rem 1.5rem;
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-    .profile-img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-      border: 3px solid var(--bg-body);
-      box-shadow: 0 4px 16px rgba(44, 82, 130, 0.15);
-    }
-    .profile-name {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin: 0.85rem 0;
-    }
-    .social-links a {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      background: var(--bg-sidebar);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      transition: all 0.2s ease;
-      font-size: 0.95rem;
-    }
-    .social-links a:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(44, 82, 130, 0.2);
-    }
-    .contact-info {
-      margin-top: 1rem;
-      font-size: 0.82rem;
-    }
-    .contact-item {
-      display: flex;
-      align-items: start;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-secondary);
-    }
-    .contact-item i {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      margin-top: 2px;
-    }
-    .contact-item a {
-      color: var(--text-secondary);
-      word-break: break-word;
-      font-size: 0.82rem;
-    }
-    .contact-item a:hover {
-      color: var(--primary);
-    }
-    /* Navigation */
-    .nav {
-      padding: 0;
-      overflow-y: auto;
-      flex: 1;
-    }
-    .nav a {
-      display: block;
-      padding: 0.75rem 1.25rem;
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      border-left: 3px solid transparent;
-      background: var(--bg-card);
-    }
-    .nav a:hover {
-      background: var(--bg-nav-hover);
-      color: var(--primary-dark);
-      border-left-color: var(--primary-light);
-    }
-    .nav a.active {
-      background: var(--bg-nav-active);
-      color: white;
-      border-left-color: var(--primary-light);
-      font-weight: 600;
-    }
-    .nav a:not(:last-child) {
-      border-bottom: 1px solid var(--border);
-    }
-    /* Main Content Container */
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    /* Section Cards with Colored Shadows */
-    section {
-      background: var(--bg-card);
-      padding: 2rem 2.5rem;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-colored);
-      border-left: 4px solid var(--primary);
-      transition: all 0.3s ease;
-      scroll-margin-top: 2rem;
-    }
-    
-    section:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(44, 82, 130, 0.18);
-    }
-    
-    .section-header {
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid var(--bg-body);
-    }
-    .section-header h2 {
-      margin-bottom: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .section-intro {
-      color: var(--text-secondary);
-      font-size: 0.98rem;
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-    /* Timeline Items */
-    .timeline-item {
-      margin-bottom: 2rem;
-      padding-left: 1.5rem;
-      border-left: 2px solid var(--border);
-      position: relative;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -6px;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid var(--bg-card);
-    }
-    .timeline-item h3 {
-      color: var(--text-primary);
-      margin-bottom: 0.4rem;
-      font-size: 1.1rem;
-    }
-    .timeline-meta {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-    .timeline-content {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-    .timeline-content p {
-      margin-bottom: 0.4rem;
-    }
-    .timeline-content strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-    /* Lists */
-    .content-list {
-      list-style: none;
-      padding: 0;
-    }
-    .content-list li {
-      margin-bottom: 0.85rem;
-      padding-left: 1.5rem;
-      position: relative;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .content-list li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-    /* Project Cards */
-    .project-list {
-      display: grid;
-      gap: 0.75rem;
-    }
-    .project-item {
-      padding: 1rem 1.25rem;
-      background: var(--bg-sidebar);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: all 0.2s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-    .project-item:hover {
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(44, 82, 130, 0.15);
-      transform: translateX(3px);
-      background: var(--bg-card);
-    }
-    .project-title {
-      color: var(--text-primary);
-      font-weight: 500;
-      font-size: 0.92rem;
-      flex: 1;
-      line-height: 1.5;
-    }
-    .project-link {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-    .project-item:hover .project-link {
-      color: var(--primary);
-    }
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-    .skill-item {
-      padding: 1.25rem;
-      background: var(--bg-sidebar);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: all 0.2s ease;
-    }
-    .skill-item:hover {
-      border-color: var(--primary-light);
-      box-shadow: 0 4px 12px rgba(44, 82, 130, 0.15);
-      transform: translateY(-2px);
-    }
-    .skill-label {
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      font-size: 0.92rem;
-    }
-    .skill-content {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-    /* Download Button */
-    .btn-download {
-      display: block;
-      width: 100%;
-      padding: 0.75rem 1rem;
-      margin-top: 1.25rem;
-      background: var(--primary);
-      color: white;
-      font-weight: 600;
-      font-size: 0.85rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
-      letter-spacing: 0.01em;
-    }
-    .btn-download:hover {
-      background: var(--primary-dark);
-      color: white;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(44, 82, 130, 0.25);
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-    /* Mobile Menu */
-    .mobile-toggle {
-      display: none;
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1001;
-      width: 48px;
-      height: 48px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-colored);
-    }
-    .mobile-toggle i {
-      font-size: 1.25rem;
-      color: var(--text-primary);
-    }
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .layout {
-        grid-template-columns: 280px 1fr;
-        gap: 1.5rem;
-      }
-      section {
-        padding: 1.75rem 2rem;
-      }
-    }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: var(--bg-sidebar); }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+    .profile { text-align: center; padding: 2rem 1.5rem 1.5rem; background: var(--bg-card); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .profile-img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--bg-body); box-shadow: 0 4px 16px rgba(44, 82, 130, 0.15); }
+    .profile-name { font-size: 1.4rem; margin-bottom: 0.75rem; font-weight: 700; color: var(--text-primary); }
+    .social-links { display: flex; justify-content: center; gap: 0.5rem; margin: 0.85rem 0; }
+    .social-links a { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); background: var(--bg-sidebar); border-radius: 8px; border: 1px solid var(--border); transition: all 0.2s ease; font-size: 0.95rem; }
+    .social-links a:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(44, 82, 130, 0.2); }
+    .contact-info { margin-top: 1rem; font-size: 0.82rem; }
+    .contact-item { display: flex; align-items: start; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--text-secondary); }
+    .contact-item i { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; }
+    .contact-item a { color: var(--text-secondary); word-break: break-word; font-size: 0.82rem; }
+    .contact-item a:hover { color: var(--primary); }
+    .nav { padding: 0; overflow-y: auto; flex: 1; }
+    .nav a { display: block; padding: 0.75rem 1.25rem; color: var(--text-secondary); font-size: 0.88rem; font-weight: 500; transition: all 0.2s ease; border-left: 3px solid transparent; background: var(--bg-card); }
+    .nav a:hover { background: var(--bg-nav-hover); color: var(--primary-dark); border-left-color: var(--primary-light); }
+    .nav a.active { background: var(--bg-nav-active); color: white; border-left-color: var(--primary-light); font-weight: 600; }
+    .nav a:not(:last-child) { border-bottom: 1px solid var(--border); }
+    .main-content { display: flex; flex-direction: column; gap: 1.5rem; }
+    section { background: var(--bg-card); padding: 2rem 2.5rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-colored); border-left: 4px solid var(--primary); transition: all 0.3s ease; scroll-margin-top: 2rem; }
+    section:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(44, 82, 130, 0.18); }
+    .section-header { margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--bg-body); }
+    .section-header h2 { margin-bottom: 0; display: flex; align-items: center; gap: 0.5rem; }
+    .section-intro { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .timeline-item { margin-bottom: 2rem; padding-left: 1.5rem; border-left: 2px solid var(--border); position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); border: 2px solid var(--bg-card); }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item h3 { color: var(--text-primary); margin-bottom: 0.4rem; font-size: 1.1rem; }
+    .timeline-meta { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.75rem; font-style: italic; }
+    .timeline-content { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
+    .timeline-content p { margin-bottom: 0.4rem; }
+    .timeline-content strong { color: var(--text-primary); font-weight: 600; }
+    .content-list { list-style: none; padding: 0; }
+    .content-list li { margin-bottom: 0.85rem; padding-left: 1.5rem; position: relative; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+    .content-list li::before { content: '▸'; position: absolute; left: 0; color: var(--primary); font-weight: bold; font-size: 0.9rem; }
+    /* Publication card */
+    .pub-item { padding: 1.25rem 1.5rem; background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 1rem; transition: all 0.2s ease; }
+    .pub-item:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(44,82,130,0.12); }
+    .pub-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.4rem; }
+    .pub-venue { font-size: 0.85rem; color: var(--primary); font-style: italic; margin-bottom: 0.4rem; }
+    .pub-authors { font-size: 0.85rem; color: var(--text-muted); }
+    .pub-authors strong { color: var(--text-primary); }
+    /* Project cards */
+    .project-list { display: grid; gap: 0.75rem; }
+    .project-item { padding: 1rem 1.25rem; background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: 10px; transition: all 0.2s ease; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .project-item:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(44, 82, 130, 0.15); transform: translateX(3px); background: var(--bg-card); }
+    .project-title { color: var(--text-primary); font-weight: 500; font-size: 0.92rem; flex: 1; line-height: 1.5; }
+    .project-link { color: var(--text-muted); font-size: 0.85rem; transition: all 0.2s ease; flex-shrink: 0; }
+    .project-item:hover .project-link { color: var(--primary); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .skill-item { padding: 1.25rem; background: var(--bg-sidebar); border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s ease; }
+    .skill-item:hover { border-color: var(--primary-light); box-shadow: 0 4px 12px rgba(44, 82, 130, 0.15); transform: translateY(-2px); }
+    .skill-label { font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-size: 0.92rem; }
+    .skill-content { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+    .btn-download { display: block; width: 100%; padding: 0.75rem 1rem; margin-top: 1.25rem; background: var(--primary); color: white; font-weight: 600; font-size: 0.85rem; border-radius: 8px; border: none; cursor: pointer; text-align: center; transition: all 0.2s ease; letter-spacing: 0.01em; }
+    .btn-download:hover { background: var(--primary-dark); color: white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(44, 82, 130, 0.25); }
+    footer { text-align: center; padding: 2rem 0 1rem; color: var(--text-muted); font-size: 0.85rem; }
+    .mobile-toggle { display: none; position: fixed; top: 1rem; right: 1rem; z-index: 1001; width: 48px; height: 48px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; align-items: center; justify-content: center; box-shadow: var(--shadow-colored); }
+    .mobile-toggle i { font-size: 1.25rem; color: var(--text-primary); }
+    @media (max-width: 1024px) { .layout { grid-template-columns: 280px 1fr; gap: 1.5rem; } section { padding: 1.75rem 2rem; } }
     @media (max-width: 991px) {
-      .container {
-        padding: 1rem;
-      }
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 0;
-        padding-top: 4rem;
-      }
-      .mobile-toggle {
-        display: flex;
-      }
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1000;
-        border-radius: 0;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        overflow-y: auto;
-        max-height: 100vh;
-      }
-      .sidebar.active {
-        transform: translateX(0);
-      }
-      .profile {
-        padding: 2rem 1.5rem 1.5rem;
-      }
-      .nav a {
-        padding: 1rem 1.5rem;
-        font-size: 1rem;
-      }
-      section {
-        padding: 1.5rem 1.25rem;
-        scroll-margin-top: 5rem;
-      }
-      h1 { font-size: 1.5rem; }
-      h2 { font-size: 1.35rem; }
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
+      .container { padding: 1rem; }
+      .layout { grid-template-columns: 1fr; gap: 0; padding-top: 4rem; }
+      .mobile-toggle { display: flex; }
+      .sidebar { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; border-radius: 0; transform: translateX(-100%); transition: transform 0.3s ease; overflow-y: auto; max-height: 100vh; }
+      .sidebar.active { transform: translateX(0); }
+      .profile { padding: 2rem 1.5rem 1.5rem; }
+      .nav a { padding: 1rem 1.5rem; font-size: 1rem; }
+      section { padding: 1.5rem 1.25rem; scroll-margin-top: 5rem; }
+      h1 { font-size: 1.5rem; } h2 { font-size: 1.35rem; }
+      .skills-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 640px) {
-      .profile-img {
-        width: 110px;
-        height: 110px;
-      }
-      .profile-name {
-        font-size: 1.35rem;
-      }
-      section {
-        padding: 1.25rem 1rem;
-      }
-      .project-item {
-        padding: 0.85rem 1rem;
-      }
-    }
-    /* Scrollbar Styling */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-body);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--text-muted);
-    }
+    @media (max-width: 640px) { .profile-img { width: 110px; height: 110px; } .profile-name { font-size: 1.35rem; } section { padding: 1.25rem 1rem; } .project-item { padding: 0.85rem 1rem; } }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-body); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -523,22 +141,14 @@
   </button>
   <div class="container">
     <div class="layout">
-      <!-- Sidebar -->
       <aside class="sidebar">
         <div class="profile">
           <img src="erfan_shahabi.jpg" alt="Erfan Shahabi" class="profile-img">
           <h1 class="profile-name">Erfan Shahabi</h1>
-          
           <div class="social-links">
-            <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" target="_blank" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/erfanshahabi" target="_blank" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://twitter.com/erfshahabi" target="_blank" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
+            <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/erfanshahabi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com/erfshahabi" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
           </div>
           <div class="contact-info">
             <div class="contact-item">
@@ -553,6 +163,8 @@
           <a href="#education">Education</a>
           <a href="#research">Research</a>
           <a href="#experiences">Experiences</a>
+          <a href="#publications">Publications</a>
+          <a href="#teaching">Teaching</a>
           <a href="#projects">Projects</a>
           <a href="#courses">Courses</a>
           <a href="#skills">Skills</a>
@@ -560,66 +172,44 @@
           <a href="#interests">Interests</a>
         </nav>
       </aside>
-      
-      <!-- Main Content -->
+
       <main class="main-content">
         <section id="about">
-          <div class="section-header">
-            <h2>About Me</h2>
-          </div>
-          
+          <div class="section-header"><h2>About Me</h2></div>
           <p class="section-intro">
             I'm currently a Master's student in IT Engineering at the University of Tehran with a strong passion for Large Language Models, Machine Behavior, and Social Intelligence.
           </p>
-          
           <p class="section-intro">
             During my Bachelor's in Industrial Engineering, I discovered my enthusiasm for computer science and started learning programming, particularly with Python. This passion motivated me to change my path, and after achieving rank 14 in the national entrance exam, I successfully transitioned to IT Engineering for my Master's degree at the University of Tehran.
           </p>
-          
           <p class="section-intro">
-            Currently, I'm conducting research on Machine Behavior and Social Intelligence as a Research Assistant under the supervision of 
+            Currently, I'm conducting research on Machine Behavior and Social Intelligence as a Research Assistant under the supervision of
             <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Azadeh Shakery</a>
-            and 
+            and
             <a href="https://yyaghoobzadeh.github.io/" target="_blank" rel="noopener noreferrer">Dr. Yadollah Yaghoobzadeh</a>
             in the Intelligent Information Systems Laboratory at the University of Tehran.
           </p>
-          
           <p class="section-intro">
             My goal is to innovate AI-powered solutions using NLP and LLMs that enhance Machine Behavior and Social Intelligence, contributing to solving complex challenges at the intersection of intelligent interaction and socially-aware AI.
           </p>
         </section>
 
         <section id="education">
-          <div class="section-header">
-            <h2>Education</h2>
-          </div>
+          <div class="section-header"><h2>Education</h2></div>
           <div class="timeline-item">
             <h3>M.Sc. in Information Technology Engineering</h3>
             <p class="timeline-meta">University of Tehran, Tehran, Iran • Sep 2024 – Present</p>
-            
             <div class="timeline-content">
-              <p>
-                <strong>Supervisors:</strong>
-                <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
-                  Dr. Azadeh Shakery
-                </a>,
-                <a href="https://yyaghoobzadeh.github.io/" target="_blank" rel="noopener noreferrer">
-                  Dr. Yadollah Yaghoobzadeh
-                </a>
-              </p>
-              <p><strong>GPA:</strong> 4.0 / 4.0 (18.15 / 20)</p>
+              <p><strong>Supervisors:</strong> <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank">Dr. Azadeh Shakery</a>, <a href="https://yyaghoobzadeh.github.io/" target="_blank">Dr. Yadollah Yaghoobzadeh</a></p>
+              <p><strong>GPA:</strong> 4.0 / 4.0 (17.76 / 20)</p>
               <p><strong>Thesis:</strong> An Investigation and Enhancement of Strategic Behavior of Large Language Models in Social Context</p>
             </div>
           </div>
           <div class="timeline-item">
             <h3>B.Sc. in Industrial Engineering</h3>
             <p class="timeline-meta">Islamic Azad University, Science and Research Branch • Sep 2019 – Aug 2023</p>
-            
             <div class="timeline-content">
-              <p>
-                <strong>Supervisor:</strong>
-                Dr. Abbas Saghaei
-              </p>
+              <p><strong>Supervisor:</strong> Dr. Abbas Saghaei</p>
               <p><strong>GPA:</strong> 4.0 / 4.0 (18.07 / 20)</p>
               <p><strong>Thesis:</strong> Used Car Price Prediction Using Machine Learning Methods</p>
             </div>
@@ -627,13 +217,9 @@
         </section>
 
         <section id="research">
-          <div class="section-header">
-            <h2>Research Interests</h2>
-          </div>
+          <div class="section-header"><h2>Research Interests</h2></div>
           <p class="section-intro">
-            As a Research Assistant at the Intelligent Information Systems Laboratory under supervision of <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Azadeh Shakery</a>
-            and 
-            <a href="https://yyaghoobzadeh.github.io/" target="_blank" rel="noopener noreferrer">Dr. Yadollah Yaghoobzadeh</a>, I focus on:
+            As a Research Assistant at the Intelligent Information Systems Laboratory under supervision of <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank">Dr. Azadeh Shakery</a> and <a href="https://yyaghoobzadeh.github.io/" target="_blank">Dr. Yadollah Yaghoobzadeh</a>, I focus on:
           </p>
           <ul class="content-list">
             <li>Large Language Models (LLMs) and Machine Behavior</li>
@@ -645,71 +231,145 @@
         </section>
 
         <section id="experiences">
-          <div class="section-header">
-            <h2>Experiences</h2>
-          </div>
+          <div class="section-header"><h2>Experiences</h2></div>
+
           <div class="timeline-item">
             <h3>Researcher</h3>
-            <p class="timeline-meta">Intelligent Information Systems Lab • Dr. Azadeh Shakery, Dr. Yadollah Yaghoobzadeh</p>
-            <p class="timeline-meta">School of Electrical and Computer Engineering, University of Tehran</p>
+            <p class="timeline-meta">
+              <a href="https://ut-iislab.github.io/" target="_blank">Intelligent Information Systems Lab</a> •
+              ECE @ University of Tehran • Sep 2024 – Present
+            </p>
             <div class="timeline-content">
-              <p>Research Area: Strategic Behavior and Social Reasoning of LLMs</p>
+              <p><strong>Supervisors:</strong> <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank">Dr. Azadeh Shakery</a>, <a href="https://yyaghoobzadeh.github.io/" target="_blank">Dr. Yadollah Yaghoobzadeh</a></p>
+              <p><strong>Research Area:</strong> Strategic Behavior and Social Reasoning of LLMs</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <h3>AI Engineer</h3>
+            <p class="timeline-meta">
+              <a href="https://emofid.com" target="_blank">Mofid Securities</a> •
+              Tehran, Iran • Feb 2026 – Present
+            </p>
+            <div class="timeline-content">
+              <p>Developing AI-powered financial tools leveraging LLMs and information retrieval techniques.</p>
             </div>
           </div>
         </section>
-            
-        <section id="projects">
-          <div class="section-header">
-            <h2>Selected Projects</h2>
+
+        <section id="publications">
+          <div class="section-header"><h2>Publications</h2></div>
+
+          <div class="pub-item">
+            <div class="pub-title">
+              ProDAKD: A Profile-based Dialogue Agents Knowledge Distillation Approach for User Simulation in Conversational Recommender Systems
+            </div>
+            <div class="pub-venue">
+              Under Review at ECIR 2026 Main Conference
+              <a href="https://ecir2026.eu/" target="_blank"><i class="fas fa-external-link-alt" style="font-size:0.75rem; margin-left:4px;"></i></a>
+            </div>
+            <div class="pub-authors">
+              <strong>E. Shahabi</strong>*, A. Roshandel*, M. Sadeghi, V. Rahimzadeh, A. Shakery &nbsp;(*equal contribution)
+            </div>
           </div>
+        </section>
+
+        <section id="teaching">
+          <div class="section-header"><h2>Teaching Experience</h2></div>
+
+          <div class="timeline-item">
+            <h3>Teaching Assistant — Natural Language Processing <span style="font-weight:400; font-size:0.9rem;">(Graduate)</span></h3>
+            <p class="timeline-meta">
+              <a href="https://nlp-ut.github.io" target="_blank">Course Website</a> •
+              Instructor: <a href="https://scholar.google.com/citations?user=m5tCFEoAAAAJ&hl=en" target="_blank">Dr. Heshaam Faili</a> •
+              ECE @ University of Tehran • Sep 2025 – Present
+            </p>
+            <div class="timeline-content">
+              <p>Designed TravelBot assignment: a conversational travel assistant using ReAct architecture and LangGraph for flight search, hotel booking, and trip planning.</p>
+              <p>Implemented RAG pipeline for retrieving destination information and generating personalized travel recommendations.</p>
+              <p>Led workshops mentoring students on LangChain and LangGraph frameworks for building agent-based systems.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Teaching Assistant — Intelligent Information Retrieval <span style="font-weight:400; font-size:0.9rem;">(Graduate)</span></h3>
+            <p class="timeline-meta">
+              <a href="https://iir-ut.github.io" target="_blank">Course Website</a> •
+              Instructor: <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank">Dr. Azadeh Shakery</a> •
+              ECE @ University of Tehran • Sep 2025 – Present
+            </p>
+            <div class="timeline-content">
+              <p>Designed assignments on conversational search, RAG systems, and multi-agent architectures.</p>
+              <p>Led technical workshops on LLMs in IR, covering LangChain, LangGraph, and ReAct patterns.</p>
+              <p>Guided students in implementing practical retrieval systems using state-of-the-art language models.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Teaching Assistant — Advanced Data Mining <span style="font-weight:400; font-size:0.9rem;">(Graduate)</span></h3>
+            <p class="timeline-meta">
+              Instructor: <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank">Dr. Azadeh Shakery</a> •
+              ECE @ University of Tehran • Feb 2026 – Present
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Teaching Assistant — Natural Language Processing <span style="font-weight:400; font-size:0.9rem;">(Graduate)</span></h3>
+            <p class="timeline-meta">
+              Instructor: <a href="https://yyaghoobzadeh.github.io/" target="_blank">Dr. Yadollah Yaghoobzadeh</a> •
+              ECE @ University of Tehran • Feb 2026 – Present
+            </p>
+          </div>
+        </section>
+
+        <section id="projects">
+          <div class="section-header"><h2>Selected Projects</h2></div>
           <div class="project-list">
             <a href="https://github.com/erfanshahabi/UT_LLM/tree/main/LLM_CA2_SHAHABI_810103166" target="_blank" class="project-item">
-              <span class="project-title">Fine-Tuning LLaMA-3.2 using ORPO for Preference-Based Alignment</span>
+              <span class="project-title">Fine-Tuning LLaMA-3.2 using ORPO and DPO for Human-Preference-Based Alignment</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
             <a href="https://github.com/erfanshahabi/UT_LLM/tree/main/LLM_CA3_SHAHABI_810103166" target="_blank" class="project-item">
-              <span class="project-title">LLM Alignment via Human Preference Optimization (DPO)</span>
+              <span class="project-title">Quantization-Aware Reasoning and Text-to-SQL Agent Design using ReAct and LangGraph</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
             <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA6" target="_blank" class="project-item">
-              <span class="project-title">ChatFood: ReAct-based Conversational Agent with LangGraph and Gemini</span>
+              <span class="project-title">ChatFood: ReAct-based Conversational Food Chatbot with LangGraph and Gemini</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
-            <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA6" target="_blank" class="project-item">
-              <span class="project-title">Conversational Search with RAG: Dataset Construction & Evaluation</span>
+            <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR_CA6_SHAHABI" target="_blank" class="project-item">
+              <span class="project-title">Conversational Search with RAG: Dataset Construction and Multifaceted Evaluation</span>
+              <i class="fas fa-external-link-alt project-link"></i>
+            </a>
+            <a href="https://binvest.co" target="_blank" class="project-item">
+              <span class="project-title">Developing a RAG Pipeline for Oil and Gas Drilling Chatbot — Binvest Co.</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
             <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP_CA4_SHAHABI" target="_blank" class="project-item">
-              <span class="project-title">Multilingual NER & Efficient Summarization via Model Compression</span>
+              <span class="project-title">Deep Learning for Sequence Labeling and Text Summarization with RNNs and Attention</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
-            <a href="https://github.com/erfanshahabi/UT_NLP/tree/main/NLP-CA3" target="_blank" class="project-item">
-              <span class="project-title">Sequence Labeling & Summarization using RNNs and Attention</span>
-              <i class="fas fa-external-link-alt project-link"></i>
-            </a>
-            <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA4" target="_blank" class="project-item">
-              <span class="project-title">Sentiment Analysis on IMDB using Traditional IR Techniques</span>
+            <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR_CA4" target="_blank" class="project-item">
+              <span class="project-title">Sentiment Classification of IMDB Reviews using Text Preprocessing and Classical IR Techniques</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
             <a href="https://github.com/erfanshahabi/UT_IIR/tree/main/IIR-CA5" target="_blank" class="project-item">
-              <span class="project-title">Query-Document Relevance Classification using BERT</span>
+              <span class="project-title">Relevance Classification using BERT for Query-Document Pairs in IR Tasks</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
             <a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA5_810103166" target="_blank" class="project-item">
-              <span class="project-title">Semantic Clustering with Sentence Embeddings</span>
+              <span class="project-title">Semantic Clustering of StackOverflow Questions using Sentence Embeddings</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
             <a href="https://github.com/erfanshahabi/UT_DM/tree/main/DM_CA6_810103166" target="_blank" class="project-item">
-              <span class="project-title">Forecasting Community Dynamics with Multi-Task GNNs</span>
+              <span class="project-title">Forecasting Community Dynamics in Social Graphs using Multi-Task GNNs</span>
               <i class="fas fa-external-link-alt project-link"></i>
             </a>
           </div>
         </section>
 
         <section id="courses">
-          <div class="section-header">
-            <h2>Courses</h2>
-          </div>
+          <div class="section-header"><h2>Courses</h2></div>
           <div class="timeline-item">
             <h3>Natural Language Processing</h3>
             <p class="timeline-meta">University of Tehran • Dr. Hesham Faili</p>
@@ -748,35 +408,28 @@
         </section>
 
         <section id="skills">
-          <div class="section-header">
-            <h2>Skills & Expertise</h2>
-          </div>
+          <div class="section-header"><h2>Skills & Expertise</h2></div>
           <div class="skills-grid">
             <div class="skill-item">
               <div class="skill-label">Programming</div>
               <div class="skill-content">Python, JavaScript</div>
             </div>
-            
             <div class="skill-item">
               <div class="skill-label">Large Language Models</div>
-              <div class="skill-content">Hugging Face, LangChain, LangGraph, Unsloth, PEFT, TRL</div>
+              <div class="skill-content">Hugging Face, LangChain, LangGraph, LangFuse, Unsloth, PEFT, TRL</div>
             </div>
-            
             <div class="skill-item">
               <div class="skill-label">Machine Learning</div>
               <div class="skill-content">PyTorch, Scikit-learn, TensorFlow, Evaluate</div>
             </div>
-            
             <div class="skill-item">
               <div class="skill-label">Information Retrieval</div>
               <div class="skill-content">Sentence Transformers, BM25, Lexical & Semantic Retrieval</div>
             </div>
-            
             <div class="skill-item">
               <div class="skill-label">Databases</div>
               <div class="skill-content">SQL, LanceDB</div>
             </div>
-            
             <div class="skill-item">
               <div class="skill-label">Languages</div>
               <div class="skill-content">English (Advanced), Persian (Native)</div>
@@ -785,18 +438,14 @@
         </section>
 
         <section id="honors">
-          <div class="section-header">
-            <h2>Honors & Awards</h2>
-          </div>
+          <div class="section-header"><h2>Honors & Awards</h2></div>
           <ul class="content-list">
             <li>Ranked 14th in Nationwide Graduate Level University Entrance Examination for Information Technology Engineering</li>
           </ul>
         </section>
 
         <section id="interests">
-          <div class="section-header">
-            <h2>Interests</h2>
-          </div>
+          <div class="section-header"><h2>Interests</h2></div>
           <ul class="content-list">
             <li>Exploring recent research in Artificial Intelligence and Natural Language Processing</li>
             <li>Studying Social Intelligence, Cognitive Science, and Human-Computer Interaction</li>
@@ -811,23 +460,21 @@
       </main>
     </div>
   </div>
-  
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const mobileToggle = document.querySelector('.mobile-toggle');
       const sidebar = document.querySelector('.sidebar');
       const navLinks = document.querySelectorAll('.nav a');
       const sections = document.querySelectorAll('section');
-      
-      // Mobile menu toggle
+
       if (mobileToggle) {
         mobileToggle.addEventListener('click', () => {
           sidebar.classList.toggle('active');
           document.body.classList.toggle('no-scroll');
         });
       }
-      
-      // Close mobile menu when clicking nav link
+
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           if (window.innerWidth <= 991) {
@@ -836,62 +483,54 @@
           }
         });
       });
-      
-      // Active section highlighting with scroll
+
       function setActiveLink() {
         let current = '';
         const scrollPosition = window.scrollY + 120;
-        
         sections.forEach(section => {
           const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + section.clientHeight) {
             current = section.getAttribute('id');
           }
         });
-        
         navLinks.forEach(link => {
           link.classList.remove('active');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-          }
+          if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
         });
-        
-        // If at the top of the page, activate first link
         if (window.scrollY < 100 && navLinks.length > 0) {
           navLinks.forEach(link => link.classList.remove('active'));
           navLinks[0].classList.add('active');
         }
       }
-      
-      // Initial active state
-      if (navLinks.length > 0) {
-        navLinks[0].classList.add('active');
+
+      if (navLinks.length > 0) navLinks[0].classList.add('active');
+
+      // sync nav scroll proportionally with page scroll
+      const nav = document.querySelector('.nav');
+      function syncNavScroll() {
+        setActiveLink();
+        if (!nav || window.innerWidth <= 991) return;
+
+        const pageScrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const navScrollable  = nav.scrollHeight - nav.clientHeight;
+        if (pageScrollable <= 0 || navScrollable <= 0) return;
+
+        const ratio     = window.scrollY / pageScrollable;
+        const navTarget = ratio * navScrollable;
+        nav.scrollTo({ top: navTarget, behavior: 'auto' });
       }
-      
-      // Scroll event listener with throttling for performance
+
       let scrollTimeout;
       window.addEventListener('scroll', function() {
-        if (scrollTimeout) {
-          window.cancelAnimationFrame(scrollTimeout);
-        }
-        scrollTimeout = window.requestAnimationFrame(function() {
-          setActiveLink();
-        });
+        if (scrollTimeout) window.cancelAnimationFrame(scrollTimeout);
+        scrollTimeout = window.requestAnimationFrame(syncNavScroll);
       }, { passive: true });
-      
-      // Handle initial hash in URL
+
       if (window.location.hash) {
         const target = document.querySelector(window.location.hash);
-        if (target) {
-          setTimeout(() => {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 100);
       }
-      
-      // Set initial active link on page load
+
       setActiveLink();
     });
   </script>
