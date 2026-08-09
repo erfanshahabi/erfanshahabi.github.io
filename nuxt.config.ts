@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'Erfan Shahabi - AI Researcher',
+      title: 'Erfan Shahabi - NLP/LLMs Researcher',
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
         { rel: 'apple-touch-icon', href: '/logo.svg' },
@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;600;700&display=swap' }
       ],
       meta: [
-        { name: 'description', content: "Master's student in IT Engineering at University of Tehran, researching NLP, LLMs, and Machine Behavior." },
+        { name: 'description', content: "NLP/LLMs Researcher — Master's student in IT Engineering at University of Tehran, researching NLP, LLMs, and Machine Behavior." },
         { name: 'google-site-verification', content: 'yc-6k8sx2Q1evW53FMfhIwzdmOqgNxCe33WKg9JWGkg' }
       ]
     }

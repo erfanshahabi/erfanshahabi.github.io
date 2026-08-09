@@ -20,6 +20,7 @@ function isActive(item: (typeof navItems)[number]) {
     <div class="profile">
       <img src="/erfan_shahabi.jpg" alt="Erfan Shahabi" class="profile-img">
       <h1 class="profile-name">Erfan Shahabi</h1>
+      <p class="profile-title">NLP/LLMs Researcher</p>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/erfanshahabi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
