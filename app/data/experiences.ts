@@ -15,7 +15,7 @@ export const experiences: ExperienceEntry[] = [
   },
   {
     title: 'AI Engineer',
-    metaHtml: `<a href="https://emofid.com" target="_blank" rel="noopener noreferrer">Mofid Stock Brokerage</a> • Tehran, Iran • Feb 2026 – Present`,
+    metaHtml: `<a href="https://emofid.com" target="_blank" rel="noopener noreferrer">Mofid Stock Brokerage</a> • Tehran, Iran • Feb 2026 – Jul 2026`,
     contentHtml: `<p>Developing AI-powered financial tools leveraging LLMs and information retrieval techniques.</p>`
   }
 ]
