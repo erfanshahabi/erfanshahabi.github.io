@@ -7,6 +7,14 @@ export interface TeachingEntry {
 
 export const teaching: TeachingEntry[] = [
   {
+    title: 'Head Teaching Assistant — Intelligent Information Retrieval',
+    level: '(Graduate)',
+    metaHtml: `<a href="https://iir-ut.github.io" target="_blank" rel="noopener noreferrer">Course Website</a> • Instructor: <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Azadeh Shakery</a> • ECE @ University of Tehran • Sep 2026 – Present`,
+    contentHtml: `
+      <p>Coordinated 6 computer assignments, 3 workshops &amp; the paper presentation module with a team of 6 TAs.</p>
+    `
+  },
+  {
     title: 'Teaching Assistant — Natural Language Processing',
     level: '(Graduate)',
     metaHtml: `<a href="https://nlp-ut.github.io" target="_blank" rel="noopener noreferrer">Course Website</a> • Instructor: <a href="https://scholar.google.com/citations?user=m5tCFEoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Heshaam Faili</a> • ECE @ University of Tehran • Sep 2025 – Present`,
@@ -19,7 +27,7 @@ export const teaching: TeachingEntry[] = [
   {
     title: 'Teaching Assistant — Intelligent Information Retrieval',
     level: '(Graduate)',
-    metaHtml: `<a href="https://iir-ut.github.io" target="_blank" rel="noopener noreferrer">Course Website</a> • Instructor: <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Azadeh Shakery</a> • ECE @ University of Tehran • Sep 2025 – Present`,
+    metaHtml: `<a href="https://iir-ut.github.io" target="_blank" rel="noopener noreferrer">Course Website</a> • Instructor: <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Azadeh Shakery</a> • ECE @ University of Tehran • Sep 2025 – Sep 2026`,
     contentHtml: `
       <p>Designed assignments on conversational search, RAG systems, and multi-agent architectures.</p>
       <p>Led technical workshops on LLMs in IR, covering LangChain, LangGraph, and ReAct patterns.</p>
