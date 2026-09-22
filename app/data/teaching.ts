@@ -11,7 +11,7 @@ export const teaching: TeachingEntry[] = [
     level: '(Graduate)',
     metaHtml: `<a href="https://iir-ut.github.io" target="_blank" rel="noopener noreferrer">Course Website</a> • Instructor: <a href="https://scholar.google.com/citations?user=E-QpN74AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Dr. Azadeh Shakery</a> • ECE @ University of Tehran • Sep 2026 – Present`,
     contentHtml: `
-      <p>Coordinated 6 computer assignments, 3 workshops &amp; the paper presentation module with a team of 6 TAs.</p>
+      <p>Coordinated 6 computer assignments, workshops &amp; the paper presentation module with a team of 6 TAs.</p>
     `
   },
   {
