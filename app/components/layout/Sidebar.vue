@@ -22,6 +22,7 @@ function isActive(item: (typeof navItems)[number]) {
       <h1 class="profile-name">Erfan Shahabi</h1>
       <p class="profile-title">NLP/LLMs Researcher</p>
       <div class="social-links">
+        <a href="https://scholar.google.com/citations?user=zzYEaVQAAAAJ" target="_blank" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
         <a href="https://www.linkedin.com/in/erfan-shahabi-2b6374202/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/erfanshahabi" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://twitter.com/erfshahabi" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>

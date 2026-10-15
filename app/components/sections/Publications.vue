@@ -9,7 +9,8 @@ import { publications } from '~/data/publications'
       <div class="pub-title">{{ pub.title }}</div>
       <div class="pub-venue">
         <span v-html="pub.venueHtml"></span>
-        <a v-if="pub.link" :href="pub.link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" style="font-size:0.75rem; margin-left:4px;"></i></a>
+        <span class="pub-sep">|</span>
+        <a :href="`https://arxiv.org/abs/${pub.arxiv}`" target="_blank" rel="noopener noreferrer" class="pub-arxiv">arXiv:{{ pub.arxiv }}</a>
       </div>
       <div class="pub-authors" v-html="pub.authorsHtml"></div>
     </div>

@@ -5,7 +5,7 @@ const year = new Date().getFullYear()
 <template>
   <SectionsAbout />
   <SectionsEducation />
-  <!-- <SectionsPublications /> hidden for now -->
+  <SectionsPublications />
   <SectionsResearch />
   <SectionsExperiences />
   <SectionsTeaching />
