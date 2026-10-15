@@ -83,7 +83,7 @@ section:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(44, 82
 .pub-item { padding: 1.25rem 1.5rem; background: var(--bg-sidebar); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 1rem; transition: all 0.2s ease; }
 .pub-item:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(44,82,130,0.12); }
 .pub-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.4rem; }
-.pub-venue { font-size: 0.85rem; color: var(--primary); font-style: italic; margin-bottom: 0.4rem; }
+.pub-venue { font-size: 0.85rem; color: var(--text-primary); font-style: italic; margin-bottom: 0.4rem; }
 .pub-sep { margin: 0 0.35rem; color: var(--text-muted); font-style: normal; }
 .pub-arxiv { font-style: normal; }
 .pub-authors { font-size: 0.85rem; color: var(--text-muted); }
