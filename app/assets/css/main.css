@@ -137,3 +137,11 @@ footer { text-align: center; padding: 2rem 0 1rem; color: var(--text-muted); fon
 .prose a { text-decoration: underline; }
 .back-link { display: inline-block; margin-bottom: 1.25rem; font-size: 0.9rem; color: var(--text-muted); }
 .back-link:hover { color: var(--primary); }
+
+/* News */
+.news-list { list-style: none; padding: 0; }
+.news-item { display: flex; gap: 1rem; margin-bottom: 0.85rem; font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); }
+.news-item:last-child { margin-bottom: 0; }
+.news-date { flex-shrink: 0; width: 5.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.88rem; }
+.news-text strong { color: var(--text-primary); font-weight: 600; }
+@media (max-width: 640px) { .news-item { flex-direction: column; gap: 0.15rem; } }
